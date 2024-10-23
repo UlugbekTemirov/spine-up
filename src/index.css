@@ -1,0 +1,197 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Dudka";
+  src: url(./assets/fonts/dudka.ttf);
+}
+
+* {
+  font-family: "Inter", sans-serif;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  mask-repeat: no-repeat;
+  mask-size: 100%;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100%;
+  -webkit-mask-position: center;
+  vertical-align: middle;
+}
+
+.icon-phone {
+  mask-image: url(./assets/icons/phone.svg);
+  -webkit-mask-image: url(./assets/icons/phone.svg);
+}
+
+.icon-menu {
+  mask-image: url(./assets/icons/menu.svg);
+  -webkit-mask-image: url(./assets/icons/menu.svg);
+}
+
+.icon-exit {
+  mask-image: url(./assets/icons/exit.svg);
+  -webkit-mask-image: url(./assets/icons/exit.svg);
+}
+
+.icon-arrow {
+  mask-image: url(./assets/icons/arrow.svg);
+  -webkit-mask-image: url(./assets/icons/arrow.svg);
+}
+
+.icon-location {
+  mask-image: url(./assets/icons/location.svg);
+  -webkit-mask-image: url(./assets/icons/location.svg);
+}
+
+.icon-wishlist {
+  mask-image: url(./assets/icons/wishlist.svg);
+  -webkit-mask-image: url(./assets/icons/wishlist.svg);
+}
+
+.icon-users {
+  mask-image: url(./assets/icons/users.svg);
+  -webkit-mask-image: url(./assets/icons/users.svg);
+}
+
+.icon-location-mobile {
+  mask-image: url(./assets/icons/location-mobile.svg);
+  -webkit-mask-image: url(./assets/icons/location-mobile.svg);
+}
+
+.icon-wishlist-mobile {
+  mask-image: url(./assets/icons/wishlist-mobile.svg);
+  -webkit-mask-image: url(./assets/icons/wishlist-mobile.svg);
+}
+
+.icon-users-mobile {
+  mask-image: url(./assets/icons/users-mobile.svg);
+  -webkit-mask-image: url(./assets/icons/users-mobile.svg);
+}
+
+.icon-play {
+  mask-image: url(./assets/icons/play.svg);
+  background-image: url(./assets/icons/play.svg);
+  -webkit-mask-image: url(./assets/icons/play.svg);
+}
+
+.icon-list {
+  mask-image: url(./assets/icons/list.svg);
+  -webkit-mask-image: url(./assets/icons/list.svg);
+}
+
+.icon-clock {
+  mask-image: url(./assets/icons/clock.svg);
+  -webkit-mask-image: url(./assets/icons/clock.svg);
+}
+
+.icon-calendar {
+  mask-image: url(./assets/icons/calendar.svg);
+  -webkit-mask-image: url(./assets/icons/calendar.svg);
+}
+
+.icon-like {
+  mask-image: url(./assets/icons/like.svg);
+  -webkit-mask-image: url(./assets/icons/like.svg);
+}
+
+.icon-usercheck {
+  mask-image: url(./assets/icons/usercheck.svg);
+  -webkit-mask-image: url(./assets/icons/usercheck.svg);
+}
+
+.icon-userstar {
+  mask-image: url(./assets/icons/userstar.svg);
+  -webkit-mask-image: url(./assets/icons/userstar.svg);
+}
+
+.icon-rocket {
+  mask-image: url(./assets/icons/rocket.svg);
+  -webkit-mask-image: url(./assets/icons/rocket.svg);
+}
+
+.icon-clipboard {
+  mask-image: url(./assets/icons/clipboard.svg);
+  -webkit-mask-image: url(./assets/icons/clipboard.svg);
+}
+
+.icon-ellipse {
+  mask-image: url(./assets/icons/ellipse.svg);
+  -webkit-mask-image: url(./assets/icons/ellipse.svg);
+}
+
+.icon-videoplay {
+  mask-image: url(./assets/icons/video-play.svg);
+  -webkit-mask-image: url(./assets/icons/video-play.svg);
+}
+
+.icon-check {
+  mask-image: url(./assets/icons/check.svg);
+  -webkit-mask-image: url(./assets/icons/check.svg);
+}
+
+.icon-uncheck {
+  mask-image: url(./assets/icons/uncheck.svg);
+  -webkit-mask-image: url(./assets/icons/uncheck.svg);
+}
+
+.icon-contact-location {
+  mask-image: url(./assets/icons/contact-location.svg);
+  -webkit-mask-image: url(./assets/icons/contact-location.svg);
+}
+
+.icon-contact-phone {
+  mask-image: url(./assets/icons/contact-phone.svg);
+  -webkit-mask-image: url(./assets/icons/contact-phone.svg);
+}
+
+.icon-contact-email {
+  mask-image: url(./assets/icons/contact-email.svg);
+  -webkit-mask-image: url(./assets/icons/contact-email.svg);
+}
+
+.icon-instagram {
+  mask-image: url(./assets/icons/instagram.svg);
+  background: url(./assets/icons/instagram.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-mask-image: url(./assets/icons/instagram.svg);
+}
+
+.icon-telegram {
+  mask-image: url(./assets/icons/telegram.svg);
+  background: url(./assets/icons/telegram.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-mask-image: url(./assets/icons/telegram.svg);
+}
+
+.icon-facebook {
+  mask-image: url(./assets/icons/facebook.svg);
+  background: url(./assets/icons/facebook.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-mask-image: url(./assets/icons/facebook.svg);
+}
+
+.icon-youtube {
+  mask-image: url(./assets/icons/youtube.svg);
+  background: url(./assets/icons/youtube.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-mask-image: url(./assets/icons/youtube.svg);
+}

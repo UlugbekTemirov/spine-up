@@ -1,0 +1,102 @@
+import React from "react";
+import { IMAGES } from "@/static/images";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import Button from "@/components/Button";
+import { useNavigate } from "react-router-dom";
+
+export default function ServiceCard() {
+  const navigate = useNavigate();
+
+  return (
+    <div>
+      <Swiper
+        modules={[Autoplay, Pagination]}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        spaceBetween={0}
+        slidesPerView={1}
+      >
+        {Array.from({ length: 1 }).map((_, slideIndex) => (
+          <SwiperSlide
+            key={slideIndex}
+            className="xl:h-[280px] h-[220px] rounded-[12px] w-full"
+          >
+            <img
+              className="w-fit"
+              src={IMAGES.HOME.AUTHOR_METHOD}
+              alt="Author method"
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      <div>
+        <div className="md:my-6 my-4">
+          <h1 className="font-bold md:text-[24px] text-[18px] mb-2 font-dudka leading-[28px]">
+            Авторская методика для детей
+          </h1>
+          <p className="text-secondary-light text-[14px] leading-[21px] font-normal">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been{" "}
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <div className="md:text-[15px] text-[12px] grid grid-cols-2 items-center gap-[26px]">
+            <div className="flex items-center gap-3">
+              <span>
+                <span className="icon icon-list bg-secondary-icon !w-6 !h-6" />
+              </span>
+              <h1 className="text-secondary-light text-nowrap">
+                Число занятий
+              </h1>
+            </div>
+
+            <h1 className="font-dudka font-bold">24 занятий</h1>
+          </div>
+
+          <div className="md:text-[15px] text-[12px] grid grid-cols-2 items-center gap-[26px]">
+            <div className="flex items-center gap-3">
+              <span>
+                <span className="icon icon-clock bg-secondary-icon !w-6 !h-6" />
+              </span>
+              <h1 className="text-secondary-light">Длительность</h1>
+            </div>
+
+            <h1 className="font-dudka font-bold">По 2 часа</h1>
+          </div>
+
+          <div className="md:text-[15px] text-[12px] grid grid-cols-2 items-start gap-[26px]">
+            <div className="flex items-center gap-3">
+              <span>
+                <span className="icon icon-calendar bg-secondary-icon !w-6 !h-6" />
+              </span>
+              <h1 className="text-secondary-light text-nowrap">Дни занятий</h1>
+            </div>
+
+            <h1 className="font-dudka font-bold">
+              Понидельник, Среда, Пятница
+            </h1>
+          </div>
+        </div>
+
+        <div className="flex items-center md:gap-6 gap-3 font-semibold md:mt-10 mt-6">
+          <Button
+            onClick={() => navigate(`/service/${"dummy-text"}`)}
+            className="w-full"
+            variant="outlined"
+          >
+            Подробнее
+          </Button>
+          <Button className="w-full">Записаться</Button>
+        </div>
+      </div>
+    </div>
+  );
+}
