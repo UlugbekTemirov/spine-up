@@ -3,7 +3,7 @@ import ReactPlayer from "react-player/lazy";
 import rickroll from "@assets/temp/rickroll.mp4";
 import { AnimatePresence, motion } from "framer-motion";
 
-export default function ReviewPlayer() {
+export default function ReviewPlayer({link}) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handlePlayerClick = () => {
@@ -11,9 +11,9 @@ export default function ReviewPlayer() {
   };
 
   return (
-    <div className="md:h-[400px] h-[250px] rounded-[18px] relative overflow-hidden flex items-center border w-fit cursor-pointer">
-      <div className="w-auto h-auto">
-        <AnimatePresence>
+    <div className="h-fit rounded-[18px] relative overflow-hidden flex items-center w-fit cursor-pointer">
+      {/* <div className="w-auto h-auto"> */}
+        {/* <AnimatePresence>
           {!isPlaying && (
             <motion.div
               initial={{
@@ -52,17 +52,12 @@ export default function ReviewPlayer() {
               </motion.div>
             </motion.div>
           )}
-        </AnimatePresence>
+        </AnimatePresence> */}
 
         <ReactPlayer
-          onEnded={handlePlayerClick}
-          playing={isPlaying}
-          url={rickroll}
-          width={"100%"}
-          height={"100%"}
-          onClick={handlePlayerClick}
+          url={link}
         />
-      </div>
+      {/* </div> */}
     </div>
   );
 }

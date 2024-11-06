@@ -6,28 +6,28 @@ const WHYUS = [
     icon: "icon icon-like",
     color: "#6A90FD",
     text: "Положительные отзывы",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
+    desc: "Более 8 000 человек доверили нам свое здоровье, и получили именно то, что искали -восстановление здоровья и подвижности",
   },
   {
     id: 2,
     icon: "icon icon-userstar",
     color: "#FF6535",
     text: "Профессиональная команда",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
+    desc: "Наш коллектив состоит из дипломированных профессионалов в медицинской, спортивной и оздоровительной сфере",
   },
   {
     id: 3,
     icon: "icon icon-usercheck",
     color: "#6A90FD",
     text: "Индивидуальные подход",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
+    desc: "Наши специалисты с чуткостью относятся к здоровью каждого клиента и его индивидуальным потребностям и пожеланиям",
   },
   {
     id: 4,
     icon: "icon icon-rocket",
     color: "#FF6535",
     text: "Реальные результаты",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
+    desc: "Вы почувствуете улучшение уже после первого занятия. И это правда-Вы убедитесь в этом сами, опробовав наши продукты",
   },
 ];
 
@@ -40,8 +40,7 @@ export default function WhyUs() {
             Почему именно мы?
           </h1>
           <p className="text-secondary xl:max-w-[555px] max-w-[450px] md:text-[16px] text-[14px]">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's{" "}
+          Почему именно мы-заменить на Почему выбирают нас:
           </p>
         </div>
 

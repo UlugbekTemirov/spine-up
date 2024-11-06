@@ -15,7 +15,7 @@ export default function Team() {
       <div className="container">
         <Header
           header="Наша профессиональная команда"
-          desc="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's "
+          desc="Наш коллектив состоит из специалистов с опытом работы в сфере оздоровительной медицины и лечебно-профилактической физкультуры. Это дипломированные врачи и профессиональные тренера, которые постоянно проходят повышение квалификации своих знаний и навыков."
         />
 
         <div className="mt-10 grid md:grid-cols-3 gap-[30px]">

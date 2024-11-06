@@ -6,6 +6,7 @@ import ApplyForm from "./components/ApplyForm";
 
 export default function () {
   const [modal, setModal] = useState(false);
+  const [vacancy, setVacancy] = useState("")
 
   useEffect(() => {
     window.scrollTo({
@@ -19,6 +20,7 @@ export default function () {
       <BasicModal
         className={"max-h-[90vh] overflow-y-auto"}
         isOpen={modal}
+        
         onClose={() => setModal(false)}
       >
         <h1 className="font-bold text-[24px] font-dudka">Подать заявку</h1>
@@ -27,14 +29,14 @@ export default function () {
           с вами!
         </p>
 
-        <ApplyForm />
+        <ApplyForm vacancy={vacancy} />
       </BasicModal>
 
       <div className="bg-vacancy py-[50px]">
         <Header
           header={"Вакансии"}
           desc={
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+            "Наш коллектив всегда рад видеть в своей команде молодых и амбициозных специалистов, готовых учиться и развиваться вместе с нами! Если Вам интересен опыт работы в администрировании и возможности овладеть навыками наших оздоровительных методик и массажа-свяжитесь с нами по телефону обратной связи!"
           }
         />
       </div>
@@ -43,7 +45,7 @@ export default function () {
         {[1].map((_) => (
           <div className="p-10 border border-[#E7EAEE] rounded-[24px]">
             <div>
-              <h1 className="font-dudka font-bold text-[32px] text-[18px]">
+              <h1 className="font-dudka font-bold md:text-[32px] text-[18px]">
                 Десткий психолог
               </h1>
               <p className="text-secondary">8 000 000 - 12 000 000 сум</p>
@@ -74,7 +76,7 @@ export default function () {
               </div>
             </div>
 
-            <Button onClick={() => setModal(true)} className={"min-w-[220px]"}>
+            <Button onClick={() => {setModal(true); setVacancy("vacancy_id")}} className={"min-w-[220px]"}>
               Подать заяку
             </Button>
           </div>

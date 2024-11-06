@@ -19,18 +19,21 @@ const FAQ = [
     icon: "icon-location bg-[#6A90FD]",
     iconbg: "bg-faq-blue",
     text: "Где мы находимся?",
+    hash: "#contact"
   },
   {
     id: 2,
     icon: "icon-wishlist bg-[#FF6535] ",
     iconbg: "bg-faq-orange",
     text: "Наши продукты и услуги",
+    hash: "#services"
   },
   {
     id: 3,
     icon: "icon-users bg-[#94BB16]",
     iconbg: "bg-faq-green border border-[#F1F6E1]",
     text: "Наши опытные специалисты",
+    hash: '#team'
   },
 ];
 
@@ -54,9 +57,8 @@ export default function Home() {
                 Добро пожаловать <br className="md:hidden" /> в Revite
               </h1>
               <p className="text-secondary my-[30px] md:text-[20px] text-[14px] md:text-left text-center">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s
+              Мы рады приветствовать Вас в нашем оздоровительном Центре!
+              Ваше здоровье, подвижность и красота-в наших профессиональных руках!
               </p>
               <Button className="px-6 font-semibold md:w-fit w-full py-[14px]">
                 Получить консультацию
@@ -100,9 +102,11 @@ export default function Home() {
                   className="font-semibold xl:text-[22px] md:text-[20px] text-[18px] leading-[30px]"
                 />
               </div>
+              <a href={faq.hash}>
               <Button className="font-semibold w-full mt-6" variant="outlined">
                 Подробнее
               </Button>
+              </a>
             </div>
           ))}
         </div>
@@ -116,16 +120,8 @@ export default function Home() {
                 Авторская методика
               </h1>
               <p className="text-secondary md:leading-[30px] leading-[24px] xl:text-[20px] md:text-[18px]">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset sheets
-                containing Lorem Ipsum passages, and more recently with desktop
-                publishing software like Aldus PageMaker including versions of
-                Lorem Ipsum.
+              Программа для детей «Spine Up Kid's» — это комплекс оздоровительных занятий в детской группе, направленных на профилактику и исправление нарушений опорно-двигательного аппарата. 
+              Авторская методика программы включает упражнения для укрепления мышц спины, позвоночника и ног, что особенно важно в период роста ребенка. Дети выполняют задания в игровой форме, что делает тренировки увлекательными и способствует их физической подготовке.
               </p>
             </div>
           </div>

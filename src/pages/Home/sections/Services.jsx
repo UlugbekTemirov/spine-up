@@ -9,7 +9,7 @@ export default function Services() {
       <div className="container">
         <Header
           header="Наши продукты и услуги"
-          desc="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+          desc="Мы проводим групповые занятия для укрепления мышц спины и позвоночника, а также профилактики и укрепления суставов по уникальной авторской методике в основном курсе «Здоровая Спина». "
         />
 
         <div className="grid md:grid-cols-3 gap-[30px] mt-10">

@@ -14,10 +14,7 @@ export default function Reviews() {
               Отзыви о нас и мы в цифрах!
             </h1>
             <p className="text-secondary md:leading-[30px] leading-[21px] md:text-[20px] text-[14px]">
-              today there are new radiology systems installed in even smaller
-              community hospitals across the country The heads of these
-              radiology operations face the same kinds of issues confronting our
-              colleagues across Europe or the United{" "}
+            За годы нашей работы мы выросли в современный и центр, внедрили несколько уникальных методик и курсов оздоровления, и действительно помогли обрести здоровье большому количеству людей-от самых маленьких-до пожилых людей глубокого возраста.
             </p>
           </div>
 
@@ -25,17 +22,17 @@ export default function Reviews() {
             <div className="flex flex-col gap-10">
               <div className="flex items-center relative">
                 <span>
-                  <AnimatedCounter width={200} prefix="+" end={10000} />
+                  <AnimatedCounter width={200} prefix="+" end={8000} />
                   <h1 className="text-secondary text-center -mt-3">
-                    Пациентов
+                  Пациентов без боли
                   </h1>
                 </span>
                 <span className="absolute icon icon-ellipse bg-[#FF6535] md:-top-3 md:-left-[29px] left-3 -top-4 md:!w-[244px] md:!h-[113px] !w-[172px] !h-[98px]" />
               </div>
 
               <span>
-                <AnimatedCounter width={200} end={82} />
-                <h1 className="text-secondary text-center -mt-3">Пациентов</h1>
+                <AnimatedCounter width={200} end={2000} />
+                <h1 className="text-secondary text-center -mt-3">Постоянных клиентов</h1>
               </span>
             </div>
 
@@ -46,16 +43,16 @@ export default function Reviews() {
               </div>
 
               <div>
-                <AnimatedCounter width={100} prefix="+" end={68} />
-                <h1 className="text-secondary text-center -mt-3">Пациентов</h1>
+                <AnimatedCounter width={100} prefix="+" end={7} />
+                <h1 className="text-secondary text-center -mt-3">Курсов и программ</h1>
               </div>
             </div>
           </div>
         </div>
 
         <div className="md:mt-[56px] mt-6 border md:flex hidden items-center gap-[30px] overflow-x-auto whitespace-nowrap">
-          {[1, 2, 3, 4].map((_) => (
-            <ReviewPlayer key={_} />
+          {["https://youtube.com/shorts/vpPkqu1Pd74?si=bFAlbcyiCCHOKtJp", "https://youtu.be/EGRqFL39LPA?si=It_MAooQpx35l0pP", "https://youtu.be/vpfeiWVTCno?si=nKJbKMGDcNONmEGv", "https://youtu.be/_0JP1oTCmFE?si=SCxqn_gS79TVEVbk"].map((link, index) => (
+            <ReviewPlayer link={link} key={index} />
           ))}
         </div>
 

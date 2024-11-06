@@ -1,15 +1,28 @@
 import Button from "@/components/Button";
 import LazyImage from "@/components/LazyImage";
 import BasicModal from "@/components/Modal/BasicModal";
+import { postClientData, resetStatus } from "@/redux/api/client.slice";
 import { IMAGES } from "@/static/images";
 import React, { useEffect, useState } from "react";
 import { IMaskInput } from "react-imask";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+
+const initData = {
+  phone: "",
+  name: "",
+  service: "test",
+  platform: "website"
+}
 
 export default function Service() {
   const { slug } = useParams();
   const [modal, setModal] = useState(false);
   const [endModal, setEndModal] = useState(false);
+  const [userData, setUserData] = useState(initData)
+
+  const dispatch = useDispatch()
+  const {status, error} = useSelector(state => state.client)
 
   useEffect(() => {
     window.scrollTo({
@@ -19,11 +32,54 @@ export default function Service() {
   }, []);
 
   const handleSubmit = () => {
-    // same logic
-
-    setModal(false);
-    setEndModal(true);
+    dispatch(postClientData({...userData, phone: "+" + userData.phone}))
   };
+
+  useEffect(() => {
+    if (status === "succeeded") {
+setModal(false);
+setUserData(initData)
+    setEndModal(true);
+      dispatch(resetStatus())
+    }
+  }, [status])
+
+  const data = [
+    {
+      id: 1,
+      title: 'Общение с родителями',
+      text: 'Предварительный осмотр ребенка и консультации нашим специалистом и рекомендации для родителей'
+    },
+    {
+      id: 2,
+      title: 'Диагностика',
+      text: 'Визуальное исследование и оценка состояния позвоночника суставов и подвижности ребенка.'
+    },
+    {
+      id: 3,
+      title: 'Запись в группу',
+      text: 'Подбор удобного времени, с учетом расписания ребенка и рабочего графика родителей'
+    },
+    {
+      id: 4,
+      title: 'Постоянный контроль',
+      text: 'На каждом занятии, от начала-и до конца курса осуществляется контроль состояния здоровья ребенка с учетом индивидуальных особенностей организма и корректировки нагрузки'
+    },
+    {
+      id: 5,
+      title: 'Постоянная обратная связь',
+      text: 'Наглядное Фиксирование (фото) продвижения коррекции у ребенка, с подробными ответами на все вопросы для родителей'
+    },
+    {
+      id: 6,
+      title: 'Результаты прогресса',
+      text: 'Демонстрация улучшения показателей здоровья, подвижности, осанки у ребенка и финальные рекомендации для поддержания этого состояния'
+    },
+  ]
+
+  const handleDataChange = (e) => {
+    setUserData(prev => ({...prev, [e.target.name]: e.target.value}))
+  }
 
   return (
     <div>
@@ -49,6 +105,9 @@ export default function Service() {
               type="text"
               placeholder="Пишите свое имя"
               id="name"
+              name="name"
+              value={userData.name}
+              onChange={handleDataChange}
               className="border border-[#E7EAEE] bg-[#F9FAFD] py-3 px-4 rounded-[12px] outline-none md:text-[16px] text-[14px]"
             />
           </div>
@@ -67,14 +126,15 @@ export default function Service() {
               radix="."
               type="tel"
               unmask={true}
-              onAccept={(value, mask) => console.log(value)}
+              value={userData.phone}
+              onAccept={(value, mask) => setUserData(prev => ({...prev, phone: value}))}
               placeholder="+998 97 628 28 87"
               className="border border-[#E7EAEE] bg-[#F9FAFD] py-3 px-4 rounded-[12px] outline-none md:text-[16px] text-[14px]"
             />
           </div>
 
-          <Button type="button" onClick={handleSubmit} className="py-3">
-            Записаться
+          <Button disabled={status === "loading"} type="button" onClick={handleSubmit} className={` ${status === 'loading' && "bg-gray-400 pointer-events-none"} py-3`}>
+            { status === "loading" ? "Loading..." : "Записаться"}
           </Button>
         </form>
       </BasicModal>
@@ -118,8 +178,7 @@ export default function Service() {
             </h1>
 
             <p className="text-secondary-light">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been{" "}
+            «Здоровая и красивая осанка формируется с детства»
             </p>
 
             <div className="flex flex-col gap-4">
@@ -198,15 +257,11 @@ export default function Service() {
             Что такое авторская методика для детей?
           </h1>
           <p className="text-secondary text-[18px]">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960
+          Программа для детей «Spine Up Kid's» — это комплекс оздоровительных занятий в детской группе, направленных на профилактику и исправление нарушений опорно-двигательного аппарата. 
+          Авторская методика программы включает упражнения для укрепления мышц спины, позвоночника и ног, что особенно важно в период роста ребенка. Дети выполняют задания в игровой форме, что делает тренировки увлекательными и способствует их физической подготовке.
           </p>
 
-          <Button className="w-[300px]">Записаться на демо курс</Button>
+          <Button onClick={() => setModal(true)} className="w-[300px]">Записаться на демо курс</Button>
         </div>
       </div>
 
@@ -218,21 +273,20 @@ export default function Service() {
           </h1>
 
           <div className="grid grid-cols-3 xl:gap-[60px] gap-10 mt-10">
-            {[1, 2, 3, 4, 5, 6].map((nums) => (
-              <div className="gap-[18px] flex items-start" key={nums}>
+            {data.map(({title, id, text}) => (
+              <div className="gap-[18px] flex items-start" key={id}>
                 <span>
                   <span className="w-[60px] h-[60px] shadow-faq flex items-center justify-center font-dudka text-[42px] text-primary rounded-full bg-white">
-                    {nums}
+                    {id}
                   </span>
                 </span>
 
                 <div>
                   <h1 className="text-[20px] font-bold">
-                    Lorem Ipsum is simply{" "}
+                    {title}
                   </h1>
                   <p className="mt-2 leading-[24px] text-secondary">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's{" "}
+                    {text}
                   </p>
                 </div>
               </div>
@@ -251,7 +305,7 @@ export default function Service() {
           <div>
             <img
               className="rounded-[12px] h-full"
-              src={"https://placehold.co/600x420"}
+              src={IMAGES.PHOTOGRAPHY.PHOTO_1}
               alt="placeholder"
             />
           </div>
@@ -260,14 +314,14 @@ export default function Service() {
             <div>
               <img
                 className="rounded-[12px]"
-                src={"https://placehold.co/600x400"}
+                src={IMAGES.PHOTOGRAPHY.PHOTO_2}
                 alt="placeholder"
               />
             </div>
             <div>
               <img
                 className="rounded-[12px]"
-                src={"https://placehold.co/600x400"}
+                src={IMAGES.PHOTOGRAPHY.PHOTO_3}
                 alt="placeholder"
               />
             </div>
@@ -275,14 +329,14 @@ export default function Service() {
             <div>
               <img
                 className="rounded-[12px]"
-                src={"https://placehold.co/600x400"}
+                src={IMAGES.PHOTOGRAPHY.PHOTO_4}
                 alt="placeholder"
               />
             </div>
             <div>
               <img
                 className="rounded-[12px]"
-                src={"https://placehold.co/600x400"}
+                src={IMAGES.PHOTOGRAPHY.PHOTO_5}
                 alt="placeholder"
               />
             </div>
@@ -294,14 +348,14 @@ export default function Service() {
             <div>
               <img
                 className="rounded-[12px] h-full"
-                src={"https://placehold.co/600x400"}
+                src={IMAGES.PHOTOGRAPHY.PHOTO_6}
                 alt="placeholder"
               />
             </div>
             <div>
               <img
                 className="rounded-[12px] h-full"
-                src={"https://placehold.co/600x400"}
+                src={IMAGES.PHOTOGRAPHY.PHOTO_7}
                 alt="placeholder"
               />
             </div>
@@ -311,7 +365,7 @@ export default function Service() {
             <div>
               <img
                 className="rounded-[12px] h-full"
-                src={"https://placehold.co/600x420"}
+                src={IMAGES.PHOTOGRAPHY.PHOTO_8}
                 alt="placeholder"
               />
             </div>
@@ -321,14 +375,14 @@ export default function Service() {
             <div>
               <img
                 className="rounded-[12px] h-full"
-                src={"https://placehold.co/600x400"}
+                src={IMAGES.PHOTOGRAPHY.PHOTO_9}
                 alt="placeholder"
               />
             </div>
             <div>
               <img
                 className="rounded-[12px] h-full"
-                src={"https://placehold.co/600x400"}
+                src={IMAGES.PHOTOGRAPHY.PHOTO_10}
                 alt="placeholder"
               />
             </div>
@@ -349,8 +403,7 @@ export default function Service() {
               Записаться на демо курс!
             </h1>
             <p className="mt-4 text-[20px] leading-[30px] max-w-[680px] mx-auto text-secondary-light">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's{" "}
+            Попробуйте наше пробное и бесплатное занятие для того, чтобы почувствовать улучшение вашей подвижности и здоровья!
             </p>
           </div>
 

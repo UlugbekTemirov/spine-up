@@ -38,7 +38,7 @@ export default function index() {
           <Header
             header={"Наш Сертификат"}
             desc={
-              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+              "Сертификат Центра – скан сертификата центра"
             }
           />
 

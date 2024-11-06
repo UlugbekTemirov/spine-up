@@ -5,19 +5,19 @@ import React from "react";
 const FAQ = [
   {
     id: 1,
-    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem ?",
+    text: "Сколько занятий нам будет нужно?",
   },
   {
     id: 2,
-    text: "Lorem Ipsum is simply dummy text of the printing ",
+    text: "Сколько длится одно занятие?",
   },
   {
     id: 3,
-    text: "the printing and typesetting industry. Lorem ?",
+    text: "Как часто нам надо ходить на занятия?",
   },
   {
     id: 4,
-    text: "simply dummy text of the printing and typesetting industry. Lorem ?",
+    text: "Сколько стоит пробное занятие?",
   },
 ];
 
@@ -28,7 +28,7 @@ export default function Faq() {
         <Header
           header={"Часто задаваемые вопросы"}
           desc={
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's "
+            "Мы всегда готовы ответить на любой интересующий Вас вопрос!"
           }
         />
 
