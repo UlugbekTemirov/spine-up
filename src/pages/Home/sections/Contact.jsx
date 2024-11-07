@@ -32,7 +32,7 @@ export default function Contact({userData, setUserData, handleSubmit, handleData
 
           <div>
             <h1 className="font-semibold md:text-[20px] text-[18px] md:mb-6 mb-4">
-              Филиал “Lorem ipsum”
+              Филиал “Мирабадский Район”
             </h1>
 
             <div className="flex items-start gap-5">
@@ -47,8 +47,7 @@ export default function Contact({userData, setUserData, handleSubmit, handleData
                   Наш адрес
                 </h1>
                 <p className="text-secondary md:text-[18px] text-[14px] md:leading-[27px] leading-[21px] font-normal">
-                  150100, Farg’ona viloyati, Farg’ona shahri, Sayilgoh ko’chasi
-                  18/2,2
+                  Узбекистан, Ташкентская область, г.Ташкент, Мирабадский Район, проспект Афросиаб, 12-Б 
                 </p>
               </div>
             </div>
@@ -65,7 +64,7 @@ export default function Contact({userData, setUserData, handleSubmit, handleData
                   Наш номер телефона
                 </h1>
                 <p className="text-secondary md:text-[18px] text-[14px] md:leading-[27px] leading-[21px] font-normal">
-                  +998 97 628 28 82, +998 95 315 84 96
+                +998 90 178 44 81, +998 33 008 84 34
                 </p>
               </div>
             </div>
@@ -82,7 +81,7 @@ export default function Contact({userData, setUserData, handleSubmit, handleData
                   Электронный адрес
                 </h1>
                 <p className="text-secondary md:text-[18px] text-[14px] md:leading-[27px] leading-[21px] font-normal">
-                  isoftware@gmail.com
+                spineupuz@gmail.com
                 </p>
               </div>
             </div>
@@ -93,21 +92,21 @@ export default function Contact({userData, setUserData, handleSubmit, handleData
               </h1>
 
               <div className="flex items-center gap-4">
-                <span className="hover:scale-105 active:scale-95 duration-200 cursor-pointer">
+                <a href="https://instagram.com/revite.uz" className="hover:scale-105 active:scale-95 duration-200 cursor-pointer">
                   <span className="icon icon-instagram !w-10 !h-10 md:scale-100 scale-90" />
-                </span>
+                </a>
 
-                <span className="hover:scale-105 active:scale-95 duration-200 cursor-pointer">
+                <a className="hover:scale-105 active:scale-95 duration-200 cursor-pointer">
                   <span className="icon icon-facebook !w-10 !h-10  md:scale-100 scale-90" />
-                </span>
+                </a>
 
-                <span className="hover:scale-105 active:scale-95 duration-200 cursor-pointer">
+                <a href="https://t.me/reviteuz" className="hover:scale-105 active:scale-95 duration-200 cursor-pointer">
                   <span className="icon icon-telegram !w-10 !h-10  md:scale-100 scale-90" />
-                </span>
+                </a>
 
-                <span className="hover:scale-105 active:scale-95 duration-200 cursor-pointer">
+                <a href="https://www.youtube.com/@Revite-medical-center" className="hover:scale-105 active:scale-95 duration-200 cursor-pointer">
                   <span className="icon icon-youtube !w-10 !h-10  md:scale-100 scale-90" />
-                </span>
+                </a>
               </div>
             </div>
           </div>
