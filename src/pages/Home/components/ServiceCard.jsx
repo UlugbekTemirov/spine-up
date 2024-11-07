@@ -57,7 +57,7 @@ export default function ServiceCard({
           <h1 itemProp="name" className="font-bold md:text-[24px] text-[18px] mb-2 font-dudka leading-[28px]">
             {title}
           </h1>
-          <p itemProp="description" className="text-secondary-light text-[14px] leading-[21px] font-normal">
+          <p itemProp="description" className="text-secondary-light text-[14px] leading-[21px] font-normal line-clamp-1">
             {description}
           </p>
         </div>
@@ -88,7 +88,7 @@ export default function ServiceCard({
               <span className="icon icon-calendar bg-secondary-icon !w-6 !h-6" />
               <h1 className="text-secondary-light text-nowrap">Дни занятий</h1>
             </div>
-            <h1 className="font-dudka font-bold" itemProp="availability">
+            <h1 className="font-dudka font-bold h-[45px] line-clamp-2" itemProp="availability">
               {class_days[0].days.join(", ")}
             </h1>
           </div>
