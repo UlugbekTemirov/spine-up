@@ -244,7 +244,7 @@ setUserData(initData)
           </div>
 
           <div className="w-[52%]">
-            <LazyImage width="100%" src={IMAGES.HOME.AUTHOR_METHOD} />
+            <LazyImage className="rounded-lg" width="100%" src={newProduct.image} />
           </div>
         </div>
       </div>
@@ -254,15 +254,15 @@ setUserData(initData)
         <div className="flex items-start gap-[30px]">
           <div>
             <img
-              src={IMAGES.SERVICE.IMAGE1}
-              className="w-full"
+              src={newProduct.hasOwnProperty('two_pictures') && newProduct.two_pictures[0].image}
+              className="w-full h-[300px] rounded-lg"
               alt="image.png"
             />
           </div>
           <div>
             <img
-              className="mt-[60px] w-full"
-              src={IMAGES.SERVICE.IMAGE2}
+              className="mt-[60px] w-full h-[300px] rounded-lg"
+              src={newProduct.hasOwnProperty('two_pictures') && newProduct.two_pictures[0].image}
               alt="image.png"
             />
           </div>
@@ -273,8 +273,7 @@ setUserData(initData)
             Что такое авторская методика для детей?
           </h1>
           <p className="text-secondary text-[18px]">
-          Программа для детей «Spine Up Kid's» — это комплекс оздоровительных занятий в детской группе, направленных на профилактику и исправление нарушений опорно-двигательного аппарата. 
-          Авторская методика программы включает упражнения для укрепления мышц спины, позвоночника и ног, что особенно важно в период роста ребенка. Дети выполняют задания в игровой форме, что делает тренировки увлекательными и способствует их физической подготовке.
+          {newProduct.big_description}
           </p>
 
           <Button onClick={() => setModal(true)} className="w-[300px]">Записаться на демо курс</Button>
@@ -321,7 +320,7 @@ setUserData(initData)
           <div>
             <img
               className="rounded-[12px] h-full"
-              src={IMAGES.PHOTOGRAPHY.PHOTO_1}
+              src={newProduct.hasOwnProperty('ten_pictures') && newProduct.ten_pictures[0].image}
               alt="placeholder"
             />
           </div>
@@ -330,14 +329,14 @@ setUserData(initData)
             <div>
               <img
                 className="rounded-[12px]"
-                src={IMAGES.PHOTOGRAPHY.PHOTO_2}
+                src={newProduct.hasOwnProperty('ten_pictures') && newProduct.ten_pictures[1].image}
                 alt="placeholder"
               />
             </div>
             <div>
               <img
                 className="rounded-[12px]"
-                src={IMAGES.PHOTOGRAPHY.PHOTO_3}
+                src={newProduct.hasOwnProperty('ten_pictures') && newProduct.ten_pictures[2].image}
                 alt="placeholder"
               />
             </div>
@@ -345,14 +344,14 @@ setUserData(initData)
             <div>
               <img
                 className="rounded-[12px]"
-                src={IMAGES.PHOTOGRAPHY.PHOTO_4}
+                src={newProduct.hasOwnProperty('ten_pictures') && newProduct.ten_pictures[3].image}
                 alt="placeholder"
               />
             </div>
             <div>
               <img
                 className="rounded-[12px]"
-                src={IMAGES.PHOTOGRAPHY.PHOTO_5}
+                src={newProduct.hasOwnProperty('ten_pictures') && newProduct.ten_pictures[4].image}
                 alt="placeholder"
               />
             </div>
@@ -364,14 +363,14 @@ setUserData(initData)
             <div>
               <img
                 className="rounded-[12px] h-full"
-                src={IMAGES.PHOTOGRAPHY.PHOTO_6}
+                src={newProduct.hasOwnProperty('ten_pictures') && newProduct.ten_pictures[5].image}
                 alt="placeholder"
               />
             </div>
             <div>
               <img
                 className="rounded-[12px] h-full"
-                src={IMAGES.PHOTOGRAPHY.PHOTO_7}
+                src={newProduct.hasOwnProperty('ten_pictures') && newProduct.ten_pictures[6].image}
                 alt="placeholder"
               />
             </div>
@@ -381,7 +380,7 @@ setUserData(initData)
             <div>
               <img
                 className="rounded-[12px] h-full"
-                src={IMAGES.PHOTOGRAPHY.PHOTO_8}
+                src={newProduct.hasOwnProperty('ten_pictures') && newProduct.ten_pictures[7].image}
                 alt="placeholder"
               />
             </div>
@@ -391,14 +390,14 @@ setUserData(initData)
             <div>
               <img
                 className="rounded-[12px] h-full"
-                src={IMAGES.PHOTOGRAPHY.PHOTO_9}
+                src={newProduct.hasOwnProperty('ten_pictures') && newProduct.ten_pictures[8].image}
                 alt="placeholder"
               />
             </div>
             <div>
               <img
-                className="rounded-[12px] h-full"
-                src={IMAGES.PHOTOGRAPHY.PHOTO_10}
+                className="rounded-[12px] h-full" 
+                src={newProduct.hasOwnProperty('ten_pictures') && newProduct.ten_pictures[9].image}
                 alt="placeholder"
               />
             </div>

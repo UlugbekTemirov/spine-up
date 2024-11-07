@@ -1,6 +1,7 @@
 import Button from "@/components/Button";
 import React from "react";
 import { IMaskInput } from "react-imask";
+import { toast } from "react-toastify";
 
 const BRANCHES = [
   {
@@ -46,9 +47,9 @@ export default function Contact({userData, setUserData, handleSubmit, handleData
                 <h1 className="text-[#272B31] font-semibold md:text-[18px] text-[14px] mb-1">
                   Наш адрес
                 </h1>
-                <p className="text-secondary md:text-[18px] text-[14px] md:leading-[27px] leading-[21px] font-normal">
+                <a target="_blank" href="https://yandex.com/maps/-/CDtyBBjp" className="text-secondary md:text-[18px] text-[14px] md:leading-[27px] leading-[21px] font-normal hover:underline hover:underline-offset-2">
                   Узбекистан, Ташкентская область, г.Ташкент, Мирабадский Район, проспект Афросиаб, 12-Б 
-                </p>
+                </a>
               </div>
             </div>
 
@@ -63,8 +64,8 @@ export default function Contact({userData, setUserData, handleSubmit, handleData
                 <h1 className="text-[#272B31] font-semibold md:text-[18px] text-[14px] mb-1">
                   Наш номер телефона
                 </h1>
-                <p className="text-secondary md:text-[18px] text-[14px] md:leading-[27px] leading-[21px] font-normal">
-                +998 90 178 44 81, +998 33 008 84 34
+                <p  className="text-secondary md:text-[18px] text-[14px] md:leading-[27px] leading-[21px] font-normal">
+                <span className="cursor-pointer" onClick={() => {navigator.clipboard.writeText('+998 33 008 84 34'); toast.success("Успешно скопировано")}}>+998 33 008 84 34</span>, <span className="cursor-pointer" onClick={() => {navigator.clipboard.writeText('+998 90 178 44 81'); toast.success("Успешно скопировано")}}>+998 90 178 44 81</span> 
                 </p>
               </div>
             </div>
