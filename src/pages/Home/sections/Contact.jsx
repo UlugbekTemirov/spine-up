@@ -21,7 +21,7 @@ const BRANCHES = [
   },
 ];
 
-export default function Contact() {
+export default function Contact({userData, setUserData, handleSubmit, handleDataChange, status}) {
   return (
     <div id="contact" className="md:py-20 py-10">
       <div className="container grid md:grid-cols-2 md:gap-[57px] gap-10">
@@ -137,6 +137,9 @@ export default function Contact() {
                   type="text"
                   placeholder="Пишите свое имя"
                   id="name"
+                  name="name"
+                  onChange={handleDataChange}
+                  value={userData.name}
                   className="border border-[#E7EAEE] bg-[#F9FAFD] py-3 px-4 rounded-[12px] outline-none md:text-[16px] text-[14px]"
                 />
               </div>
@@ -155,14 +158,15 @@ export default function Contact() {
                   radix="."
                   type="tel"
                   unmask={true}
-                  onAccept={(value, mask) => console.log(value)}
+                  value={userData.phone}
+                  onAccept={(value, mask) => setUserData(prev => ({...prev, phone: value}))}
                   placeholder="+998 97 628 28 87"
                   className="border border-[#E7EAEE] bg-[#F9FAFD] py-3 px-4 rounded-[12px] outline-none md:text-[16px] text-[14px]"
                 />
               </div>
             </form>
 
-            <Button className="w-full md:mt-[30px] mt-6">Отправить</Button>
+            <Button disabled={status === 'loading'} onClick={handleSubmit} type='button' className={`w-full md:mt-[30px] mt-6 ${status === 'loading' ? 'opacity-50 pointer-events-none' : ''}`}>{status === 'loading' ? 'Загрузка...' : 'Отправить'}</Button>
           </div>
         </div>
       </div>

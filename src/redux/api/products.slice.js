@@ -13,7 +13,7 @@ export const getProducts = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { get } = useAxios();
-      const response = await get("/product");
+      const response = await get("/product/");
       return response.data;
     } catch (error) {
       return rejectWithValue(error);

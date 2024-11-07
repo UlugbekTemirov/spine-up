@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "@/redux/api/products.slice";
 
-export default function Services() {
+export default function Services({openModal}) {
   const {products} = useSelector(state => state.product)
 const dispatch = useDispatch()
   useEffect(() => {
@@ -22,7 +22,7 @@ const dispatch = useDispatch()
 
         <div className="grid md:grid-cols-3 gap-[30px] mt-10">
           {products.length > 0 && products.map((product, index) => (
-            <ServiceCard {...product} key={index} />
+            <ServiceCard openModal={openModal} {...product} key={index} />
           ))}
         </div>
       </div>

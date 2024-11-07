@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import Button from "@/components/Button";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 export default function ServiceCard({
   title,
@@ -12,6 +13,7 @@ export default function ServiceCard({
   duration,
   number_of_sessions,
   class_days,
+  openModal
 }) {
   const navigate = useNavigate();
 
@@ -100,7 +102,7 @@ export default function ServiceCard({
           >
             Подробнее
           </Button>
-          <Button className="w-full">Записаться</Button>
+          <Button onClick={openModal} className="w-full">Записаться</Button>
         </div>
       </div>
     </div>

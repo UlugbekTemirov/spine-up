@@ -12,6 +12,10 @@ import Team from "./sections/Team";
 import Reviews from "./sections/Reviews";
 import Faq from "./sections/FAQ";
 import Contact from "./sections/Contact";
+import BasicModal from "@/components/Modal/BasicModal";
+import { useDispatch, useSelector } from "react-redux";
+import { postClientData, resetStatus } from "@/redux/api/client.slice";
+import { IMaskInput } from "react-imask";
 
 const FAQ = [
   {
@@ -37,8 +41,20 @@ const FAQ = [
   },
 ];
 
+const initData = {
+  phone: "",
+  name: "",
+  service: "test",
+  platform: "website"
+}
+
 export default function Home() {
   const swiper = useSwiper();
+  const [consultaionModal, setConsultaionModal] = React.useState(false)
+  const [endModal, setEndModal] = React.useState(false)
+  const [userData, setUserData] = React.useState(initData)
+  const {status} = useSelector(state => state.client)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     window.scrollTo({
@@ -47,8 +63,110 @@ export default function Home() {
     });
   }, []);
 
+  const openModal = () => setConsultaionModal(true)
+  const closeModal = () => setConsultaionModal(false)
+
+  const handleDataChange = (e) => {
+    setUserData({
+      ...userData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleSubmit = () => {
+    dispatch(postClientData({...userData, phone: "+" + userData.phone}))
+  }
+
+  
+  useEffect(() => {
+    if (status === "succeeded") {
+closeModal()
+setUserData(initData)
+    setEndModal(true);
+      dispatch(resetStatus())
+    }
+  }, [status])
+
   return (
     <div>
+
+<BasicModal isOpen={consultaionModal} onClose={closeModal}>
+        <h1 className="font-dudka text-[24px] font-bold">
+          Записаться на демо курс!
+        </h1>
+        <p className="text-secondary leading-[22px] mt-2">
+          Оставьте свое имя и номер телефона, наш оператор обязательно свяжется
+          с вами!
+        </p>
+
+        <form className="flex flex-col mt-[30px] gap-[30px]">
+          <div className="flex flex-col w-full">
+            <label
+              className="font-normal text-[#5B6370] mb-2 cursor-pointer md:text-[16px] text-[14px]"
+              htmlFor="name"
+            >
+              Ваше имя
+            </label>
+            <input
+              type="text"
+              placeholder="Пишите свое имя"
+              id="name"
+              name="name"
+              value={userData.name}
+              onChange={handleDataChange}
+              className="border border-[#E7EAEE] bg-[#F9FAFD] py-3 px-4 rounded-[12px] outline-none md:text-[16px] text-[14px]"
+            />
+          </div>
+
+          <div className="flex flex-col w-full">
+            <label
+              className="font-normal text-[#5B6370] mb-2 cursor-pointer md:text-[16px] text-[14px]"
+              htmlFor="phone"
+            >
+              Номер телефона
+            </label>
+            <IMaskInput
+              id="phone"
+              mask={"+{998} 00 000 00 00"}
+              defaultValue={"+998"}
+              radix="."
+              type="tel"
+              unmask={true}
+              value={userData.phone}
+              onAccept={(value, mask) => setUserData(prev => ({...prev, phone: value}))}
+              placeholder="+998 97 628 28 87"
+              className="border border-[#E7EAEE] bg-[#F9FAFD] py-3 px-4 rounded-[12px] outline-none md:text-[16px] text-[14px]"
+            />
+          </div>
+
+          <Button disabled={status === "loading"} type="button" onClick={handleSubmit} className={` ${status === 'loading' && "bg-gray-400 pointer-events-none"} py-3`}>
+            { status === "loading" ? "Loading..." : "Записаться"}
+          </Button>
+        </form>
+      </BasicModal>
+
+      <BasicModal
+        className="w-[450px]"
+        isOpen={endModal}
+        onClose={() => setEndModal(false)}
+      >
+        <div className="flex flex-col items-center">
+          <img src={IMAGES.ICONS.GOOD} />
+          <h1 className="font-dudka font-bold text-[24px]">
+            Успешно отправлено!
+          </h1>
+          <p className="mt-2 text-secondary">
+            Оставьте свое имя и номер телефона, наш оператор обязательно
+            свяжется с вами!
+          </p>
+          <Button
+            onClick={() => setEndModal(false)}
+            className="mt-[30px] w-full"
+          >
+            Понятно!
+          </Button>
+        </div>
+      </BasicModal>
       <div className="bg-home md:h-[520px] overflow-hidden">
         <div className="container grid md:grid-cols-2 h-full md:gap-[50px] gap-20">
           <div className="flex items-center">
@@ -60,7 +178,7 @@ export default function Home() {
               Мы рады приветствовать Вас в нашем оздоровительном Центре!
               Ваше здоровье, подвижность и красота-в наших профессиональных руках!
               </p>
-              <Button className="px-6 font-semibold md:w-fit w-full py-[14px]">
+              <Button onClick={openModal} className="px-6 font-semibold md:w-fit w-full py-[14px]">
                 Получить консультацию
               </Button>
             </div>
@@ -142,7 +260,7 @@ export default function Home() {
         </div>
       </section>
 
-      <Services />
+      <Services openModal={openModal} />
 
       <WhyUs />
 
@@ -152,7 +270,7 @@ export default function Home() {
 
       <Faq />
 
-      <Contact />
+      <Contact userData={userData} setUserData={setUserData} handleDataChange={handleDataChange} handleSubmit={handleSubmit} status={status}  />
     </div>
   );
 }

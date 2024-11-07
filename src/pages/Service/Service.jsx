@@ -2,6 +2,7 @@ import Button from "@/components/Button";
 import LazyImage from "@/components/LazyImage";
 import BasicModal from "@/components/Modal/BasicModal";
 import { postClientData, resetStatus } from "@/redux/api/client.slice";
+import { getProducts } from "@/redux/api/products.slice";
 import { IMAGES } from "@/static/images";
 import React, { useEffect, useState } from "react";
 import { IMaskInput } from "react-imask";
@@ -20,15 +21,29 @@ export default function Service() {
   const [modal, setModal] = useState(false);
   const [endModal, setEndModal] = useState(false);
   const [userData, setUserData] = useState(initData)
+  const [newProduct, setNewProduct] = useState({})
 
   const dispatch = useDispatch()
   const {status, error} = useSelector(state => state.client)
+  const {products, status: productStatus} = useSelector(state => state.product)
+
+  useEffect(() => {
+    if (productStatus === "succeeded") {
+      const product = products.find(item => item.id == slug)
+
+    if (product) {
+      setNewProduct(product)
+    }
+  }
+  }, [products])
+
 
   useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: "instant",
     });
+    dispatch(getProducts())
   }, []);
 
   const handleSubmit = () => {
@@ -81,6 +96,7 @@ setUserData(initData)
     setUserData(prev => ({...prev, [e.target.name]: e.target.value}))
   }
 
+  console.log(newProduct)
   return (
     <div>
       {/* MODAL */}
@@ -170,15 +186,15 @@ setUserData(initData)
               <span className="text-secondary font-normal">
                 Наши Продукты &gt;
               </span>{" "}
-              Авторская методика для детей
+              {newProduct.title}
             </span>
 
             <h1 className="text-[50px] font-dudka leading-[55px] font-bold">
-              Авторская методика для детей
+              {newProduct.title}
             </h1>
 
             <p className="text-secondary-light">
-            «Здоровая и красивая осанка формируется с детства»
+            {newProduct.description}
             </p>
 
             <div className="flex flex-col gap-4">
@@ -192,7 +208,7 @@ setUserData(initData)
                   </h1>
                 </div>
 
-                <h1 className="font-dudka font-bold">24 занятий</h1>
+                <h1 className="font-dudka font-bold">{newProduct.number_of_sessions} занятий</h1>
               </div>
 
               <div className="md:text-[15px] text-[12px] grid grid-cols-2 items-center gap-[26px]">
@@ -203,7 +219,7 @@ setUserData(initData)
                   <h1 className="text-secondary-light">Длительность</h1>
                 </div>
 
-                <h1 className="font-dudka font-bold">По 2 часа</h1>
+                <h1 className="font-dudka font-bold">По {newProduct.duration} часа</h1>
               </div>
 
               <div className="md:text-[15px] text-[12px] grid grid-cols-2 items-start gap-[26px]">
@@ -217,7 +233,7 @@ setUserData(initData)
                 </div>
 
                 <h1 className="font-dudka font-bold">
-                  Понидельник, Среда, Пятница
+                {newProduct.hasOwnProperty("class_days") && newProduct?.class_days[0]?.days?.join(", ")}
                 </h1>
               </div>
             </div>
@@ -419,6 +435,9 @@ setUserData(initData)
                 type="text"
                 placeholder="Пишите свое имя"
                 id="name"
+                name="name"
+                value={userData.name}
+                onChange={handleDataChange}
                 className="border border-[#E7EAEE] bg-white py-3 px-4 rounded-[12px] outline-none md:text-[16px] text-[14px]"
               />
             </div>
@@ -437,13 +456,14 @@ setUserData(initData)
                 radix="."
                 type="tel"
                 unmask={true}
-                onAccept={(value, mask) => console.log(value)}
+                value={userData.phone}
+                onAccept={(value, mask) => setUserData(prev => ({...prev, phone: value}))}
                 placeholder="+998 97 628 28 87"
                 className="border border-[#E7EAEE] bg-white py-3 px-4 rounded-[12px] outline-none md:text-[16px] text-[14px]"
               />
             </div>
 
-            <Button className="py-3 px-10">Записаться</Button>
+            <Button disabled={status === 'loading'} onClick={handleSubmit} type="button" className={`py-3 px-10 ${status === 'loading' ? 'opacity-50 pointer-events-none' : ''} `}>{status === 'loading' ? 'Загрузка...' : 'Записаться'}</Button>
           </form>
         </div>
       </div>

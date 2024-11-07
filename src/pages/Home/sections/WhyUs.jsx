@@ -34,6 +34,7 @@ const WHYUS = [
 export default function WhyUs() {
   return (
     <div id="whyus" className="md:py-[60px] py-10 bg-whyus">
+      
       <div className="container">
         <div className="flex md:items-center md:flex-row flex-col justify-between">
           <h1 className="font-dudka font-bold md:text-[38px] text-[24px] mb-3 md:mb-0">
