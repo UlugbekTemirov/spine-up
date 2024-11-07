@@ -71,6 +71,9 @@ function App() {
   return (
     <Suspense fallback={PageLoader}>
       <ToastContainer />
+      <a href="https://t.me/reviteuz"  className="fixed right-5 bottom-5 z-[100000] hover:scale-105 duration-200 active:scale-95">
+      <span className="icon icon-ai !w-20 !h-20" />
+      </a>
       <AnimatePresence mode="wait">
         <Routes location={location.pathname} key={location.pathname}>
           {ROUTES.map(({ component: Component, url }) => (

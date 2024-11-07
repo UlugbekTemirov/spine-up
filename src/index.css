@@ -195,3 +195,11 @@
   background-position: center;
   -webkit-mask-image: url(./assets/icons/youtube.svg);
 }
+
+.icon-ai {
+  mask-image: url(./assets/icons/ai.svg);
+  background: url(./assets/icons/ai.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-mask-image: url(./assets/icons/ai.svg);
+}
