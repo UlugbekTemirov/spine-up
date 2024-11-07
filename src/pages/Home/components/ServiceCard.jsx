@@ -13,6 +13,7 @@ export default function ServiceCard({
   duration,
   number_of_sessions,
   class_days,
+  image,
   openModal
 }) {
   const navigate = useNavigate();
@@ -41,11 +42,11 @@ export default function ServiceCard({
         {Array.from({ length: 1 }).map((_, slideIndex) => (
           <SwiperSlide
             key={slideIndex}
-            className="xl:h-[280px] h-[220px] rounded-[12px] w-full"
+            className="xl:h-[280px] h-[220px] rounded-[12px] w-full overflow-hidden"
           >
             <img
-              className="w-fit"
-              src={IMAGES.HOME.AUTHOR_METHOD}
+              className="w-full h-[220px]"
+              src={image}
               alt={`${title} image`}
             />
           </SwiperSlide>
