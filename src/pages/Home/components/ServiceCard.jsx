@@ -5,11 +5,25 @@ import { Autoplay, Pagination } from "swiper/modules";
 import Button from "@/components/Button";
 import { useNavigate } from "react-router-dom";
 
-export default function ServiceCard({title, id, description, duration, number_of_sessions, class_days}) {
+export default function ServiceCard({
+  title,
+  id,
+  description,
+  duration,
+  number_of_sessions,
+  class_days,
+}) {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <div
+      itemScope
+      itemType="https://schema.org/Service"
+      className="service-card"
+    >
+      <meta itemProp="serviceType" content={title} />
+      <meta itemProp="description" content={description} />
+      
       <Swiper
         modules={[Autoplay, Pagination]}
         autoplay={{
@@ -30,7 +44,7 @@ export default function ServiceCard({title, id, description, duration, number_of
             <img
               className="w-fit"
               src={IMAGES.HOME.AUTHOR_METHOD}
-              alt="Author method"
+              alt={`${title} image`}
             />
           </SwiperSlide>
         ))}
@@ -38,10 +52,10 @@ export default function ServiceCard({title, id, description, duration, number_of
 
       <div>
         <div className="md:my-6 my-4">
-          <h1 className="font-bold md:text-[24px] text-[18px] mb-2 font-dudka leading-[28px]">
+          <h1 itemProp="name" className="font-bold md:text-[24px] text-[18px] mb-2 font-dudka leading-[28px]">
             {title}
           </h1>
-          <p className="text-secondary-light text-[14px] leading-[21px] font-normal">
+          <p itemProp="description" className="text-secondary-light text-[14px] leading-[21px] font-normal">
             {description}
           </p>
         </div>
@@ -49,45 +63,38 @@ export default function ServiceCard({title, id, description, duration, number_of
         <div className="flex flex-col gap-4">
           <div className="md:text-[15px] text-[12px] grid grid-cols-2 items-center gap-[26px]">
             <div className="flex items-center gap-3">
-              <span>
-                <span className="icon icon-list bg-secondary-icon !w-6 !h-6" />
-              </span>
-              <h1 className="text-secondary-light text-nowrap">
-                Число занятий
-              </h1>
+              <span className="icon icon-list bg-secondary-icon !w-6 !h-6" />
+              <h1 className="text-secondary-light text-nowrap">Число занятий</h1>
             </div>
-
-            <h1 className="font-dudka font-bold">{number_of_sessions} занятий</h1>
+            <h1 className="font-dudka font-bold" itemProp="additionalType">
+              {number_of_sessions} занятий
+            </h1>
           </div>
 
           <div className="md:text-[15px] text-[12px] grid grid-cols-2 items-center gap-[26px]">
             <div className="flex items-center gap-3">
-              <span>
-                <span className="icon icon-clock bg-secondary-icon !w-6 !h-6" />
-              </span>
+              <span className="icon icon-clock bg-secondary-icon !w-6 !h-6" />
               <h1 className="text-secondary-light">Длительность</h1>
             </div>
-
-            <h1 className="font-dudka font-bold">По {duration} часа</h1>
+            <h1 className="font-dudka font-bold" itemProp="duration">
+              По {duration} часа
+            </h1>
           </div>
 
           <div className="md:text-[15px] text-[12px] grid grid-cols-2 items-start gap-[26px]">
             <div className="flex items-center gap-3">
-              <span>
-                <span className="icon icon-calendar bg-secondary-icon !w-6 !h-6" />
-              </span>
+              <span className="icon icon-calendar bg-secondary-icon !w-6 !h-6" />
               <h1 className="text-secondary-light text-nowrap">Дни занятий</h1>
             </div>
-
-            <h1 className="font-dudka font-bold">
-              {class_days[0].days.join(", ")}  
+            <h1 className="font-dudka font-bold" itemProp="availability">
+              {class_days[0].days.join(", ")}
             </h1>
           </div>
         </div>
 
         <div className="flex items-center md:gap-6 gap-3 font-semibold md:mt-10 mt-6">
           <Button
-            onClick={() => navigate(`/service/${"dummy-text"}`)}
+            onClick={() => navigate(`/service/${id}`)}
             className="w-full"
             variant="outlined"
           >
