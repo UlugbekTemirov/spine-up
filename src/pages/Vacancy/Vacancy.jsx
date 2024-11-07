@@ -57,7 +57,7 @@ export default function () {
               <h1 className="font-dudka font-bold md:text-[32px] text-[18px]">
                 {vac?.title}
               </h1>
-              <p className="text-secondary">{Number(vac?.salary_from).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " " + "сум"} - {Number(vac?.salary_ro).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " " + "сум"}</p>
+              <p className="text-secondary">{Number(vac?.salary_from).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " " + "сум"} - {Number(vac?.salary_to).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " " + "сум"}</p>
               <p className="mt-4 text-secondary text-[18px] leading-[27px]">
                 {vac.description}
               </p>
