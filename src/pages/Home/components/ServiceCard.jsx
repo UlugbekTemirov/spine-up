@@ -5,7 +5,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import Button from "@/components/Button";
 import { useNavigate } from "react-router-dom";
 
-export default function ServiceCard() {
+export default function ServiceCard({title, id, description, duration, number_of_sessions, class_days}) {
   const navigate = useNavigate();
 
   return (
@@ -39,11 +39,10 @@ export default function ServiceCard() {
       <div>
         <div className="md:my-6 my-4">
           <h1 className="font-bold md:text-[24px] text-[18px] mb-2 font-dudka leading-[28px]">
-            Авторская методика для детей
+            {title}
           </h1>
           <p className="text-secondary-light text-[14px] leading-[21px] font-normal">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been{" "}
+            {description}
           </p>
         </div>
 
@@ -58,7 +57,7 @@ export default function ServiceCard() {
               </h1>
             </div>
 
-            <h1 className="font-dudka font-bold">24 занятий</h1>
+            <h1 className="font-dudka font-bold">{number_of_sessions} занятий</h1>
           </div>
 
           <div className="md:text-[15px] text-[12px] grid grid-cols-2 items-center gap-[26px]">
@@ -69,7 +68,7 @@ export default function ServiceCard() {
               <h1 className="text-secondary-light">Длительность</h1>
             </div>
 
-            <h1 className="font-dudka font-bold">По 2 часа</h1>
+            <h1 className="font-dudka font-bold">По {duration} часа</h1>
           </div>
 
           <div className="md:text-[15px] text-[12px] grid grid-cols-2 items-start gap-[26px]">
@@ -81,7 +80,7 @@ export default function ServiceCard() {
             </div>
 
             <h1 className="font-dudka font-bold">
-              Понидельник, Среда, Пятница
+              {class_days[0].days.join(", ")}  
             </h1>
           </div>
         </div>

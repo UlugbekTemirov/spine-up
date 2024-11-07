@@ -1,7 +1,10 @@
 import Header from "@/components/Header";
 import LazyImage from "@/components/LazyImage";
+import { getCompanyCertificate, getStaffCertificate } from "@/redux/api/certificates.slice";
+import { getStaff } from "@/redux/api/staff.slice";
 import { IMAGES } from "@/static/images";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const DUMMY_DATA = [
   {
@@ -22,14 +25,27 @@ const DUMMY_DATA = [
 ];
 
 export default function index() {
-  const [active, setActive] = useState(DUMMY_DATA[0].id);
+  const {companyCertificate, staffCertificate} = useSelector(state => state.certificates)
+  const {staff} = useSelector(state => state.staff)
+
+  const [active, setActive] = useState(staff.length > 0 ? staff[0].id : 1);
+  const dispatch = useDispatch()
+
+  console.log(staffCertificate)
 
   useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: "instant",
     });
+
+    dispatch(getCompanyCertificate())
+    dispatch(getStaff())
   }, []);
+
+  useEffect(() => {
+    dispatch(getStaffCertificate(active))
+  }, [active])
 
   return (
     <div>
@@ -43,7 +59,7 @@ export default function index() {
           />
 
           <div className="mt-10">
-            <LazyImage src={IMAGES.TEMPORARY.SERTIFICATE} />
+            <LazyImage src={companyCertificate.length > 0 && companyCertificate[0].image} />
           </div>
         </div>
       </div>
@@ -55,15 +71,13 @@ export default function index() {
               Сертификаты наших специалистов
             </h1>
             <p className="text-secondary">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s,
+              {staffCertificate.hasOwnProperty('title') ? staffCertificate.title : ''}
             </p>
           </div>
 
           <div className="mt-10 grid grid-cols-10 gap-10">
             <div className="col-span-3 flex flex-col gap-6">
-              {DUMMY_DATA.map((el, ind) => (
+              {staff.length > 0 ? staff.map((el, ind) => (
                 <div
                   onClick={() => setActive(el.id)}
                   className={`rounded-[12px] flex items-center border  gap-4 bg-white p-[10px] cursor-pointer active:scale-95 duration-200 ${
@@ -82,14 +96,14 @@ export default function index() {
                   <div>
                     <h1 className="font-bold font-dudka">{el.name}</h1>
                     <p className="text-[12px] text-secondary">
-                      {el.description}
+                      {el.position} | {el.years_of_experience} лет опыта
                     </p>
                   </div>
                 </div>
-              ))}
+              )) : 'not found'}
             </div>
             <div className="col-span-7">
-              <LazyImage src={IMAGES.TEMPORARY.ADAM_RAMZY} />
+              <LazyImage src={staffCertificate.hasOwnProperty('image') ? staffCertificate.image : ''} />
             </div>
           </div>
         </div>

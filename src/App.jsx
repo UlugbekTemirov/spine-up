@@ -2,6 +2,9 @@ import { lazy, Suspense } from "react";
 import { Routes, Route, useLocation, redirect } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 // ============== Components ================ //
 import AnimatedPages from "@components/AnimatedPages";
 import PageLoader from "@components/PageLoader";
@@ -67,6 +70,7 @@ function App() {
 
   return (
     <Suspense fallback={PageLoader}>
+      <ToastContainer />
       <AnimatePresence mode="wait">
         <Routes location={location.pathname} key={location.pathname}>
           {ROUTES.map(({ component: Component, url }) => (

@@ -1,8 +1,9 @@
 import Button from "@/components/Button";
-import { applyVacancy } from "@/redux/api/client.slice";
-import React, { useState } from "react";
+import { applyVacancy, resetStatus } from "@/redux/api/client.slice";
+import React, { useEffect, useState } from "react";
 import { IMaskInput } from "react-imask";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const initData = {
   name: '',
@@ -11,7 +12,8 @@ const initData = {
   resume: null
 }
 
-export default function ApplyForm({vacancy}) {
+export default function ApplyForm({vacancyId, close}) {
+  const { vacancyStatus } = useSelector(state => state.client)
 const [details, setDetails] = useState(initData)
 
 const dispatch = useDispatch()
@@ -27,10 +29,19 @@ const handleSubmit = () => {
   formData.append("experience", details.experience)
   formData.append("phone_number", "+" + details.phone_number)
   formData.append("resume", details.resume)
-  formData.append("vacancy", vacancy)
+  formData.append("vacancy", vacancyId)
   
   dispatch(applyVacancy(formData))
 }
+
+useEffect(() => {
+  if (vacancyStatus === "succeeded") {
+    setDetails(initData)
+    toast.success("Ваша заявка успешно отправлена")
+    dispatch(resetStatus())
+    close()
+  }
+}, [vacancyStatus])
 
   return (
     <form className="flex flex-col gap-[30px]" action="">
@@ -108,7 +119,7 @@ const handleSubmit = () => {
         />
       </div>
 
-      <Button onClick={handleSubmit} type="button" className={"w-full"}>Записаться</Button>
+      <Button  disabled={vacancyStatus === "loading"} onClick={handleSubmit} type="button" className={`w-full ${vacancyStatus === "loading" ? "opacity-50 pointer-events-none" : ""}`}>{vacancyStatus === "loading" ? "Отправка..." : "Записаться"}</Button>
     </form>
   );
 }

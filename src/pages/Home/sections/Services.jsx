@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import ServiceCard from "../components/ServiceCard";
 import Header from "@/components/Header";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "@/redux/api/products.slice";
 
 export default function Services() {
+  const {products} = useSelector(state => state.product)
+const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getProducts())
+  }, []);
+  console.log(products)
   return (
     <div id="services" className="md:py-[80px] py-10">
       <div className="container">
@@ -13,8 +21,8 @@ export default function Services() {
         />
 
         <div className="grid md:grid-cols-3 gap-[30px] mt-10">
-          {Array.from({ length: 6 }).map((_, index) => (
-            <ServiceCard key={index} />
+          {products.length > 0 && products.map((product, index) => (
+            <ServiceCard {...product} key={index} />
           ))}
         </div>
       </div>

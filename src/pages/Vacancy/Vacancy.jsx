@@ -3,10 +3,15 @@ import Header from "@/components/Header";
 import BasicModal from "@/components/Modal/BasicModal";
 import React, { useEffect, useState } from "react";
 import ApplyForm from "./components/ApplyForm";
+import { useDispatch, useSelector } from "react-redux";
+import { getVacancy } from "@/redux/api/vacancy.slice";
 
 export default function () {
+  const {vacancy, status} = useSelector(state => state.vacancy)
   const [modal, setModal] = useState(false);
-  const [vacancy, setVacancy] = useState("")
+  const [vacancyId, setVacancyId] = useState("")
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     window.scrollTo({
@@ -14,6 +19,10 @@ export default function () {
       behavior: "instant",
     });
   }, []);
+
+  useEffect(() => {
+    dispatch(getVacancy());
+  }, [])
 
   return (
     <div>
@@ -29,7 +38,7 @@ export default function () {
           с вами!
         </p>
 
-        <ApplyForm vacancy={vacancy} />
+        <ApplyForm close={() => setModal(false)} vacancyId={vacancyId} />
       </BasicModal>
 
       <div className="bg-vacancy py-[50px]">
@@ -42,18 +51,15 @@ export default function () {
       </div>
 
       <div className="py-10 container">
-        {[1].map((_) => (
+        { status === "loading" ? "" :  vacancy.length > 0 ? vacancy.map((vac) => (
           <div className="p-10 border border-[#E7EAEE] rounded-[24px]">
             <div>
               <h1 className="font-dudka font-bold md:text-[32px] text-[18px]">
-                Десткий психолог
+                {vac?.title}
               </h1>
-              <p className="text-secondary">8 000 000 - 12 000 000 сум</p>
+              <p className="text-secondary">{Number(vac?.salary_from).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " " + "сум"} - {Number(vac?.salary_ro).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " " + "сум"}</p>
               <p className="mt-4 text-secondary text-[18px] leading-[27px]">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make
+                {vac.description}
               </p>
             </div>
 
@@ -63,24 +69,25 @@ export default function () {
               </h1>
 
               <div className="grid grid-cols-2 gap-6">
-                {[1, 2, 3, 4, 5, 6].map((requirement) => (
+                {vac?.requirements?.length > 0 && vac.requirements.map(({requirement}) => (
                   <div className="flex items-center gap-3">
                     <span>
                       <span className="w-5 h-5 flex items-center justify-center bg-[#FF6535] rounded-full">
                         <span className="w-3 h-3 bg-white rounded-full"></span>
                       </span>
                     </span>
-                    <h1>lorem ipsum dolor</h1>
+                    <h1 dangerouslySetInnerHTML={{__html: requirement}} />
                   </div>
                 ))}
               </div>
             </div>
 
-            <Button onClick={() => {setModal(true); setVacancy("vacancy_id")}} className={"min-w-[220px]"}>
+            <Button onClick={() => {setModal(true); setVacancyId(vac.id)}} className={"min-w-[220px]"}>
               Подать заяку
             </Button>
           </div>
-        ))}
+        )) : <div className="flex items-center justify-center text-4xl font-medium font-dudka min-h-40">
+          <h1>Здесь пока пусто</h1></div>}
       </div>
     </div>
   );
