@@ -3,6 +3,7 @@ import { getStaff } from "@/redux/api/staff.slice";
 import { IMAGES } from "@/static/images";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const TEAM = Array.from({ length: 6 }).map((_) => ({
   id: 1,
@@ -32,8 +33,8 @@ export default function Team() {
               key={index}
             >
               <img
-                className="w-full rounded-[20px]"
-                src={IMAGES.HOME.DOCTOR}
+                className="w-full rounded-[20px] max-h-[450px]"
+                src={member.image}
                 alt="doctor"
               />
 
@@ -47,11 +48,11 @@ export default function Team() {
                   </p>
                 </div>
 
-                <span className="">
+                <Link to={"/sertificates"} className="">
                   <span className="border border-primary w-10 h-10 rounded-[12px] flex items-center justify-center duration-200 cursor-pointer hover:bg-primary active:scale-90 group">
                     <span className="icon icon-clipboard bg-black !w-[22px] !h-[22px] group-hover:bg-white" />
                   </span>
-                </span>
+                </Link>
               </div>
             </div>
           ))}

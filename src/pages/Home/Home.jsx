@@ -90,6 +90,8 @@ setUserData(initData)
   return (
     <div>
 
+      
+
 <BasicModal isOpen={consultaionModal} onClose={closeModal}>
         <h1 className="font-dudka text-[24px] font-bold">
           Записаться на демо курс!

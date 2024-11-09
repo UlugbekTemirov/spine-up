@@ -224,10 +224,10 @@ setUserData(initData)
         <div className="flex items-center lg:gap-[38px]">
           <a
             className="font-semibold xl:inline text-nowrap hidden"
-            href="tel:+998976282882"
+            href="tel:+998330088434"
           >
             <span className="icon icon-phone bg-primary !h-5 !w-5 mr-3" />
-            +998 97 628-28-82
+            +998 33 008-84-34
           </a>
           <Button onClick={() => setModal(true)} className="md:font-bold font-semibold text-[16px] md:px-6">
             Позвоните мне
