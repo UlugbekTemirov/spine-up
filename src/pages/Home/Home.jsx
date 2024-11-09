@@ -16,7 +16,7 @@ import BasicModal from "@/components/Modal/BasicModal";
 import { useDispatch, useSelector } from "react-redux";
 import { postClientData, resetStatus } from "@/redux/api/client.slice";
 import { IMaskInput } from "react-imask";
-import ReviewPlayer from "./components/ReviewPlayer";
+import ReactPlayer from "react-player";
 
 const FAQ = [
   {
@@ -248,7 +248,13 @@ setUserData(initData)
           </div>
 
           <div className="flex items-center">
-          <ReviewPlayer link={"https://youtu.be/YvEtt6VMs2g"} />
+          <span className=" w-full rounded-xl overflow-hidden">
+          <ReactPlayer
+          width={"100%"}
+          height={500}
+          url={"https://youtu.be/YvEtt6VMs2g"}
+        />
+          </span>
             {/* <div
               style={{
                 backgroundImage: `url(${IMAGES.HOME.AUTHOR_METHOD})`,
