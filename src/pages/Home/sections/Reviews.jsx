@@ -3,6 +3,7 @@ import AnimatedCounter from "@components/AnimatedCounter/index";
 
 import ReviewPlayer from "../components/ReviewPlayer";
 import { SwiperSlide, Swiper } from "swiper/react";
+import ReactPlayer from "react-player";
 
 export default function Reviews() {
   return (
@@ -59,15 +60,19 @@ export default function Reviews() {
         <div className="md:hidden mt-6">
           <Swiper
             spaceBetween={8}
-            slidesPerView={2.1}
+            slidesPerView={2.2}
             speed={500}
           >
-            {Array.from({ length: 4 }).map((_, slideIndex) => (
+            {["https://youtube.com/shorts/vpPkqu1Pd74?si=bFAlbcyiCCHOKtJp", "https://youtu.be/EGRqFL39LPA?si=It_MAooQpx35l0pP", "https://youtu.be/vpfeiWVTCno?si=nKJbKMGDcNONmEGv", "https://youtu.be/_0JP1oTCmFE?si=SCxqn_gS79TVEVbk"].map((link, index) => (
               <SwiperSlide
-                key={slideIndex}
-                className="xl:h-[280px] h-[220px] rounded-[12px] w-full"
+                key={index}
+                className="xl:h-[280px] h-[220px] rounded-[12px] w-full overflow-hidden"
               >
-                <ReviewPlayer />
+                <ReactPlayer
+                width="100%"
+                height='220px'
+          url={link}
+        />
               </SwiperSlide>
             ))}
           </Swiper>
