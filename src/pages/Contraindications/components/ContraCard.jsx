@@ -2,15 +2,15 @@ import React from "react";
 
 export default function ContraCard({ list = [1, 2, 3, 4, 5, 6], reverse }) {
   return (
-    <div className="shadow-team p-10 border border-[#E7EAEE] rounded-[24px]">
-      <h1 className="font-bold text-[32px] font-dudka">{!reverse ? "Кому можно заняться" : "Кому нельзя заниматься?"} </h1>
+    <div className="shadow-team md:p-10 p-4 border border-[#E7EAEE] rounded-[24px]">
+      <h1 className="font-bold md:text-[32px] text-2xl font-dudka">{!reverse ? "Кому можно заняться" : "Кому нельзя заниматься?"} </h1>
       {/* <p className="mt-4 text-secondary text-[18px]">
         Lorem Ipsum is simply dummy text of the printing and typesetting
         industry. Lorem Ipsum has been the industry's standard dummy text ever
         since the 1500s
       </p> */}
 
-      <div className="mt-10 flex flex-col gap-[30px]">
+      <div className="mt-5 flex flex-col md:gap-[30px] gap-4">
         {list.map((el) => (
           <div className="flex items-center gap-4">
             <span>
@@ -25,7 +25,7 @@ export default function ContraCard({ list = [1, 2, 3, 4, 5, 6], reverse }) {
               </span>
             </span>
 
-            <h1 className="font-medium leading-[24px]">
+            <h1 className="font-medium md:text-base text-[14px] leading-[24px]">
               {el}
             </h1>
           </div>

@@ -247,7 +247,7 @@ setUserData(initData)
             <LazyImage className="rounded-lg" width="100%" src={newProduct.image} />
           </div>
 
-          <Button onClick={() => setModal(true)} className="w-[300px] md:hidden block w-full">
+          <Button onClick={() => setModal(true)} className="md:w-[300px] md:hidden block w-full">
               Записаться
             </Button>
         </div>

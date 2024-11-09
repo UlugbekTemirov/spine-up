@@ -23,7 +23,7 @@ const notAllow = ["Пациентам, у которых есть определ
         />
       </div>
 
-      <div className="py-10 grid grid-cols-2 gap-[30px] container">
+      <div className="py-10 grid md:grid-cols-2 grid-cols-1 gap-[30px] container">
         <ContraCard list={allow} />
         <ContraCard list={notAllow} reverse />
       </div>

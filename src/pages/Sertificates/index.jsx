@@ -49,7 +49,7 @@ export default function index() {
 
   return (
     <div>
-      <div className="py-[50px]">
+      <div className="md:py-[50px] py-[30px]">
         <div className="container">
           <Header
             header={"Наш Сертификат"}
@@ -58,29 +58,29 @@ export default function index() {
             }
           />
 
-          <div className="mt-10 max-h-[500px] overflow-y-auto">
+          <div className="mt-10 md:max-h-[500px] overflow-y-auto">
             <LazyImage src={companyCertificate.length > 0 && companyCertificate[0].image} />
           </div>
         </div>
       </div>
 
-      <div className="bg-sertificate py-[60px]">
+      <div className="bg-sertificate md:py-[60px] py-10">
         <div className="container">
-          <div className="flex items-center justify-between gap-20">
-            <h1 className="font-bold text-[38px] leading-[45px] font-dudka min-w-[377px]">
+          <div className="flex md:flex-row flex-col items-center justify-between md:gap-20">
+            <h1 className="font-bold md:text-[38px] text-2xl md:leading-[45px] leading-[31px] font-dudka md:min-w-[377px] md:text-left text-center">
               Сертификаты наших специалистов
             </h1>
-            <p className="text-secondary">
+            <p className="text-secondary md:mt-0 mt-[18px] md:text-base text-sm md:text-left text-center">
               {staffCertificate.hasOwnProperty('title') ? staffCertificate.title : ''}
             </p>
           </div>
 
-          <div className="mt-10 grid grid-cols-10 gap-10">
-            <div className="col-span-3 flex flex-col gap-6 max-h-[650px] overflow-y-scroll">
+          <div className="md:mt-10 mt-[18px] grid md:grid-cols-10 grid-cols-1 md:gap-10 gap-6">
+            <div className="md:col-span-3 flex md:flex-col flex-row gap-6 md:max-h-[650px] md:overflow-y-scroll overflow-x-scroll">
               {staff.length > 0 ? staff.map((el, ind) => (
                 <div
                   onClick={() => setActive(el.id)}
-                  className={`rounded-[12px] flex items-center border  gap-4 bg-white p-[10px] cursor-pointer active:scale-95 duration-200 ${
+                  className={`rounded-[12px] flex items-center border  gap-4 bg-white md:p-[10px] p-2.5 min-w-[250px] cursor-pointer active:scale-95 duration-200 ${
                     active === el.id
                       ? "shadow-team border-primary"
                       : "border-transparent"
@@ -96,14 +96,14 @@ export default function index() {
 
                   <div>
                     <h1 className="font-bold font-dudka">{el.name}</h1>
-                    <p className="text-[12px] text-secondary">
+                    <p className="text-[12px] text-secondary line-clamp-2">
                       {el.position} | {el.years_of_experience} лет опыта
                     </p>
                   </div>
                 </div>
               )) : 'not found'}
             </div>
-            <div className="col-span-7">
+            <div className="md:col-span-7">
               <LazyImage className='rounded-xl' src={staffCertificate.hasOwnProperty('image') ? staffCertificate.image : ''} />
             </div>
           </div>
