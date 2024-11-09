@@ -10,7 +10,7 @@ export const NAVBAR_LINKS = [
     {
         name: "Наши Продукты",
         code: "products",
-        hash: "#services",
+        hash: "/#services",
         children: [
             {
                 image: IMAGES.NAVBAR_MENU.MENUITEM1,
@@ -54,13 +54,13 @@ export const NAVBAR_LINKS = [
     {
         name: "О нас",
         code: "about",
-        hash: "#reviews",
+        hash: "/#reviews",
         href: "/about"
     },
     {
         name: "Наша команда",
         code: "our-group",
-        hash: "#team",
+        hash: "/#team",
         href: "/our-group"
     }
 ]
