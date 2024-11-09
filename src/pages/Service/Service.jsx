@@ -179,21 +179,21 @@ setUserData(initData)
       </BasicModal>
 
       {/* HEADER */}
-      <div className="py-[50px] bg-vacancy">
-        <div className="container flex items-center gap-[50px]">
-          <div className="w-[48%] flex flex-col gap-[30px]">
-            <span className="font-semibold">
+      <div className="md:py-[50px] py-10 bg-vacancy">
+        <div className="container flex md:flex-row flex-col items-center md:gap-[50px]">
+          <div className="md:w-[48%] flex flex-col md:gap-[30px] gap-[18px]">
+            <span className="font-semibold flex items-center md:justify-start justify-center text-nowrap gap-2 md:text-base text-sm">
               <span className="text-secondary font-normal">
                 Наши Продукты &gt;
               </span>{" "}
               {newProduct.title}
             </span>
 
-            <h1 className="text-[50px] font-dudka leading-[55px] font-bold">
+            <h1 className="md:text-[50px] text-[32px] font-dudka md:leading-[55px] leading-[41px] font-bold md:text-left text-center">
               {newProduct.title}
             </h1>
 
-            <p className="text-secondary-light">
+            <p className="text-secondary-light md:text-base text-sm md:text-left text-center">
             {newProduct.description}
             </p>
 
@@ -238,69 +238,73 @@ setUserData(initData)
               </div>
             </div>
 
-            <Button onClick={() => setModal(true)} className="w-[300px]">
+            <Button onClick={() => setModal(true)} className="w-[300px] md:block hidden">
               Записаться
             </Button>
           </div>
 
-          <div className="w-[52%]">
+          <div className="md:w-[52%] md:my-0 my-4">
             <LazyImage className="rounded-lg" width="100%" src={newProduct.image} />
           </div>
+
+          <Button onClick={() => setModal(true)} className="w-[300px] md:hidden block w-full">
+              Записаться
+            </Button>
         </div>
       </div>
 
       {/* SECTION1 */}
-      <div className="container py-20 grid grid-cols-2 items-center gap-[75px]">
-        <div className="flex items-start gap-[30px]">
+      <div className="container md:py-20 py-10 grid md:grid-cols-2 grid-cols-1 items-center md:gap-[75px] gap-6">
+        <div className="flex items-start md:gap-[30px] gap-[12px]">
           <div>
             <img
               src={newProduct.hasOwnProperty('two_pictures') && newProduct.two_pictures[0].image}
-              className="w-full h-[300px] rounded-lg"
+              className="w-full md:h-[300px] h-[220px] rounded-lg object-cover"
               alt="image.png"
             />
           </div>
           <div>
             <img
-              className="mt-[60px] w-full h-[300px] rounded-lg"
+              className="mt-[60px] w-full md:h-[300px] h-[220px] rounded-lg object-cover"
               src={newProduct.hasOwnProperty('two_pictures') && newProduct.two_pictures[0].image}
               alt="image.png"
             />
           </div>
         </div>
 
-        <div className="flex flex-col gap-[30px]">
-          <h1 className="font-dudka font-bold text-[34px] leading-[44px]">
+        <div className="flex flex-col md:gap-[30px] gap-6">
+          <h1 className="font-dudka font-bold md:text-[34px] text-[24px] md:leading-[44px] leading-[31px]">
             Что такое авторская методика для детей?
           </h1>
-          <p className="text-secondary text-[18px]">
+          <p className="text-secondary md:text-[18px] text-sm">
           {newProduct.big_description}
           </p>
 
-          <Button onClick={() => setModal(true)} className="w-[300px]">Записаться на демо курс</Button>
+          <Button onClick={() => setModal(true)} className="md:w-[300px] w-full">Записаться на демо курс</Button>
         </div>
       </div>
 
       {/* SECTION2 */}
       <div className="py-[60px] bg-contact">
         <div className="container">
-          <h1 className="text-[34px] font-dudka leading-[40px] font-bold text-center">
+          <h1 className="md:text-[34px] text-[24px] font-dudka leading-[40px] font-bold text-center">
             Как проходит занятие?
           </h1>
 
-          <div className="grid grid-cols-3 xl:gap-[60px] gap-10 mt-10">
+          <div className="grid md:grid-cols-3 grid-cols-1 xl:gap-[60px] md:gap-10 gap-5 md:mt-10 mt-6">
             {data.map(({title, id, text}) => (
               <div className="gap-[18px] flex items-start" key={id}>
                 <span>
-                  <span className="w-[60px] h-[60px] shadow-faq flex items-center justify-center font-dudka text-[42px] text-primary rounded-full bg-white">
+                  <span className="md:w-[60px] md:h-[60px] w-10 h-10 shadow-faq flex items-center justify-center font-dudka md:text-[42px] text-2xl text-primary rounded-full bg-white">
                     {id}
                   </span>
                 </span>
 
                 <div>
-                  <h1 className="text-[20px] font-bold">
+                  <h1 className="md:text-[20px] font-bold">
                     {title}
                   </h1>
-                  <p className="mt-2 leading-[24px] text-secondary">
+                  <p className="mt-2 leading-[24px] text-secondary md:text-base text-sm">
                     {text}
                   </p>
                 </div>
@@ -311,12 +315,12 @@ setUserData(initData)
       </div>
 
       {/* PHOTOS */}
-      <div className="py-20 container">
-        <h1 className="font-dudka text-[34px] text-center font-bold mb-10">
+      <div className="md:py-20 py-10 container">
+        <h1 className="font-dudka md:text-[34px] text-2xl text-center font-bold md:mb-10 mb-6">
           Фотографии из занятие и результаты
         </h1>
 
-        <div className="grid grid-cols-2 gap-x-[30px]">
+        <div className="grid md:grid-cols-2 grid-cols-1 md:gap-x-[30px] gap-[18px]">
           <div>
             <img
               className="rounded-[12px] h-full"
@@ -325,7 +329,7 @@ setUserData(initData)
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-[30px]">
+          <div className="grid md:grid-cols-2 grid-cols-1 md:gap-[30px] gap-[18px]">
             <div>
               <img
                 className="rounded-[12px]"
@@ -358,8 +362,8 @@ setUserData(initData)
           </div>
         </div>
 
-        <div className="grid grid-cols-12 gap-x-[30px] mt-[30px]">
-          <div className="col-span-3 flex flex-col gap-[30px]">
+        <div className="grid md:grid-cols-12 grid-cols-1 md:gap-x-[30px] md:mt-[30px] gap-[18px] mt-[18px]">
+          <div className="md:col-span-3 flex flex-col md:gap-[30px] gap-[18px]">
             <div>
               <img
                 className="rounded-[12px] h-full"
@@ -376,7 +380,7 @@ setUserData(initData)
             </div>
           </div>
 
-          <div className="col-span-6">
+          <div className="md:col-span-6">
             <div>
               <img
                 className="rounded-[12px] h-full"
@@ -386,7 +390,7 @@ setUserData(initData)
             </div>
           </div>
 
-          <div className="col-span-3 flex flex-col gap-[30px]">
+          <div className="md:col-span-3 flex flex-col gap-[30px]">
             <div>
               <img
                 className="rounded-[12px] h-full"
@@ -406,23 +410,23 @@ setUserData(initData)
       </div>
 
       {/* REGISTER */}
-      <div className="pb-20">
-        <div className="container bg-vacancy rounded-[24px] px-[77px] py-[47px] relative z-[1] overflow-hidden">
+      <div className="md:pb-20 pb-10">
+        <div className="container bg-vacancy rounded-[24px] md:px-[77px] px-4 py-[47px] relative z-[1] overflow-hidden">
           <>
-            <span className="absolute top-[-148px] right-[-148px] -z-[1] bg-[#6A90FD0F] border-[3px] border-[#6A90FD] w-[291px] h-[291px] rounded-full" />
-            <span className="absolute top-[-82px] left-[-108px] -z-[1] bg-[#FF65350F] border-[3px] border-[#FF6535] w-[291px] h-[291px] rounded-full" />
+            <span className="absolute md:top-[-148px] md:right-[-148px] bottom-[-90px] right-[-90px] -z-[1] bg-[#6A90FD0F] border-[3px] border-[#6A90FD] md:w-[291px] md:h-[291px] w-[152px] h-[152px] rounded-full" />
+            <span className="absolute md:top-[-82px] md:left-[-108px] top-[-90px] right-[-90px]  -z-[1] bg-[#FF65350F] border-[3px] border-[#FF6535] md:w-[291px] md:h-[291px] w-[152px] h-[152px] rounded-full" />
           </>
 
           <div className="text-center">
-            <h1 className="font-bold font-dudka text-[60px]">
+            <h1 className="font-bold font-dudka md:text-[60px] text-2xl">
               Записаться на демо курс!
             </h1>
-            <p className="mt-4 text-[20px] leading-[30px] max-w-[680px] mx-auto text-secondary-light">
+            <p className="mt-4 md:text-[20px] text-sm md:leading-[30px] leading-[21px] md:max-w-[680px] mx-auto text-secondary-light">
             Попробуйте наше пробное и бесплатное занятие для того, чтобы почувствовать улучшение вашей подвижности и здоровья!
             </p>
           </div>
 
-          <form className="flex items-end mt-[44px] gap-[30px]">
+          <form className="flex md:flex-row flex-col items-end md:mt-[44px] mt-10 md:gap-[30px] gap-6">
             <div className="flex flex-col w-full">
               <label
                 className="font-normal text-[#5B6370] mb-2 cursor-pointer md:text-[16px] text-[14px]"
@@ -462,7 +466,7 @@ setUserData(initData)
               />
             </div>
 
-            <Button disabled={status === 'loading'} onClick={handleSubmit} type="button" className={`py-3 px-10 ${status === 'loading' ? 'opacity-50 pointer-events-none' : ''} `}>{status === 'loading' ? 'Загрузка...' : 'Записаться'}</Button>
+            <Button disabled={status === 'loading'} onClick={handleSubmit} type="button" className={`py-3 px-10 md:w-fit w-full ${status === 'loading' ? 'opacity-50 pointer-events-none' : ''} `}>{status === 'loading' ? 'Загрузка...' : 'Записаться'}</Button>
           </form>
         </div>
       </div>

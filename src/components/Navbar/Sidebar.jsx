@@ -6,10 +6,12 @@ import { toggleSidebar } from "@/redux/slices/config.slice";
 import { IMAGES } from "@/static/images";
 import LazyImage from "@components/LazyImage";
 import { NAVBAR_LINKS } from "@/static/navbar";
+import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   const dispatch = useDispatch();
   const [menuItems, setMenuItems] = useState(null);
+  const { products } = useSelector((state) => state.product);
 
   const { sidebar } = useSelector((state) => state.config);
 
@@ -99,23 +101,29 @@ export default function Sidebar() {
               </div>
 
               <div className="overflow-y-auto h-full">
-                {menuItems &&
-                  menuItems.map((item) => (
-                    <a
-                      key={item.code}
+                {products.length > 0 &&
+                  products.map((item) => (
+                    <Link
+                      key={item.id}
                       className="py-4 px-[18px] text-lg text-secondary flex items-center gap-4"
                       onClick={() => {
                         dispatch(toggleSidebar());
                         setMenuItems(null);
                       }}
-                      href={item.hash}
+                      to={'/service/' + item.id}
                     >
+                      <span className="w-[90px] h-[50px] rounded-lg overflow-hidden shrink-0">
                       <LazyImage
-                        className="rounded-lg w-[68px] h-[50px]"
+                      width={"100%"}
+                      height={"100%"}
                         src={item.image}
                       />
-                      <span className="font-medium">{item.name}</span>
-                    </a>
+                      </span>
+                      <div>
+                      <h1 className="font-medium text-black">{item.title}</h1>
+                      <p className="line-clamp-1 text-sm">{item.description}</p>
+                      </div>
+                    </Link>
                   ))}
               </div>
             </div>

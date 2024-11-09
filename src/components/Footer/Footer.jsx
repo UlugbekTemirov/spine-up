@@ -42,7 +42,7 @@ export default function Footer() {
         </div>
 
         <div className="flex items-center gap-3 text-[14px] text-secondary">
-          <a href="revite.uz">revite.uz</a>
+          <a href="/">revite.uz</a>
           <h1>Все права защищены!</h1>
         </div>
       </div>

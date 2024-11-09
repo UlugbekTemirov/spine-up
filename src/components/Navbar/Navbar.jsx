@@ -15,6 +15,7 @@ import BasicModal from "../Modal/BasicModal";
 import { IMaskInput } from "react-imask";
 import { postClientData, resetStatus } from "@/redux/api/client.slice";
 import { getProducts } from "@/redux/api/products.slice";
+import { Link } from "react-router-dom";
 
 const initData = {
   phone: "",
@@ -170,7 +171,7 @@ setUserData(initData)
                 onMouseEnter={() => {
                   if (link.children) setMenuItems(link.code);
                 }}
-                className={`text-nowrap ${
+                className={`text-nowrap py-3 ${
                   false ? "font-bold text-black" : "font-normal text-secondary"
                 }`}
               >
@@ -198,21 +199,24 @@ setUserData(initData)
                     transition={{
                       duration: 0.2,
                     }}
-                    className="absolute z-10 top-6 -right-[350px] bg-white shadow-lg p-[30px] rounded-[30px] w-[772px] grid grid-cols-2 gap-x-[50px] gap-y-[30px] border-2"
+                    className="absolute z-10 top-6 -right-[350px] bg-white shadow-lg p-[30px] rounded-[30px] w-[772px] grid grid-cols-2 gap-1 border-2"
                   >
                     {products.length > 0 &&
                       products.map((product, ind) => (
-                        <a
+                        <Link
                           key={ind}
-                          className="flex items-center gap-3 cursor-pointer"
-                          href={"service/" + product.id}
+                          className="flex items-center gap-3 cursor-pointer hover:bg-gray-50 rounded-lg p-2"
+                          to={"/service/" + product.id}
                         >
                           <img
                             src={product.image}
-                            className="w-[82px] h-[60px] rounded-[12px]"
+                            className="w-[80px] h-[65px] rounded-[12px]"
                           />
-                          <span className="font-medium">{product.title}</span>
-                        </a>
+                          <div className="">
+                          <h1 className="font-medium text-lg">{product.title}</h1>
+                          <p className="line-clamp-2 text-[12px] text-gray-500 leading-4">{product.description}</p>
+                          </div>
+                        </Link>
                       ))}
                   </motion.div>
                 )}

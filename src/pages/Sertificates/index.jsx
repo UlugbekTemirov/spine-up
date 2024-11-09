@@ -58,7 +58,7 @@ export default function index() {
             }
           />
 
-          <div className="mt-10">
+          <div className="mt-10 max-h-[500px] overflow-y-auto">
             <LazyImage src={companyCertificate.length > 0 && companyCertificate[0].image} />
           </div>
         </div>
@@ -76,7 +76,7 @@ export default function index() {
           </div>
 
           <div className="mt-10 grid grid-cols-10 gap-10">
-            <div className="col-span-3 flex flex-col gap-6">
+            <div className="col-span-3 flex flex-col gap-6 max-h-[650px] overflow-y-scroll">
               {staff.length > 0 ? staff.map((el, ind) => (
                 <div
                   onClick={() => setActive(el.id)}
@@ -88,8 +88,9 @@ export default function index() {
                   key={ind}
                 >
                   <img
-                    className="w-10 h-10 rounded-full"
-                    src={"https://avatar.iran.liara.run/public"}
+                    className="w-10 h-10 rounded-full shrink-0"
+                    // src={"https://avatar.iran.liara.run/public"}
+                    src={el.image}
                     alt="avatar.jpg"
                   />
 
@@ -103,7 +104,7 @@ export default function index() {
               )) : 'not found'}
             </div>
             <div className="col-span-7">
-              <LazyImage src={staffCertificate.hasOwnProperty('image') ? staffCertificate.image : ''} />
+              <LazyImage className='rounded-xl' src={staffCertificate.hasOwnProperty('image') ? staffCertificate.image : ''} />
             </div>
           </div>
         </div>

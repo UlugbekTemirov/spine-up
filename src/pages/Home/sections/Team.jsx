@@ -33,7 +33,7 @@ export default function Team() {
               key={index}
             >
               <img
-                className="w-full rounded-[20px] max-h-[450px]"
+                className="w-full rounded-[20px] max-h-[450px] object-cover"
                 src={member.image}
                 alt="doctor"
               />
@@ -44,7 +44,7 @@ export default function Team() {
                     {member.name}
                   </h1>
                   <p className="text-secondary md:text-[16px] text-[14px]">
-                    {member.position} | {member.years_of_experience	} лет опыта
+                    {member.position}
                   </p>
                 </div>
 
