@@ -96,7 +96,6 @@ setUserData(initData)
     setUserData(prev => ({...prev, [e.target.name]: e.target.value}))
   }
 
-  console.log(newProduct)
   return (
     <div>
       {/* MODAL */}

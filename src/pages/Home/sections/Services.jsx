@@ -11,7 +11,6 @@ const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getProducts())
   }, []);
-  console.log(products)
   return (
     <div id="services" className="md:py-[80px] py-10">
       <div className="container">

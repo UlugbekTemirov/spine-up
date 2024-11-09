@@ -31,8 +31,6 @@ export default function index() {
   const [active, setActive] = useState(staff.length > 0 ? staff[0].id : 1);
   const dispatch = useDispatch()
 
-  console.log(staffCertificate)
-
   useEffect(() => {
     window.scrollTo({
       top: 0,

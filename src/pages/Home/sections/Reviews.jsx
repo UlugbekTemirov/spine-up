@@ -61,8 +61,6 @@ export default function Reviews() {
             spaceBetween={8}
             slidesPerView={2.1}
             speed={500}
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={(swiper) => console.log(swiper)}
           >
             {Array.from({ length: 4 }).map((_, slideIndex) => (
               <SwiperSlide
