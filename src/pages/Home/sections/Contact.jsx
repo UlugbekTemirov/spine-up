@@ -117,11 +117,10 @@ export default function Contact({userData, setUserData, handleSubmit, handleData
           <div>
             <div className="text-center md:mb-[30px] mb-6">
               <h1 className="font-dudka md:text-[32px] text-[24px] text-[#272B31] mb-[10px] font-bold leading-[35px]">
-                Остались у вас вопросы?
+              Остались вопросы?
               </h1>
               <p className="text-[#676C74] md:text-[16px] text-[14px]">
-                Оставьте свое имя и номер телефона, наш оператор обязательно
-                свяжется с вами!
+              Оставьте своё и контактный номер телефона, мы обязательно с вами свяжемся!
               </p>
             </div>
 
@@ -131,7 +130,7 @@ export default function Contact({userData, setUserData, handleSubmit, handleData
                   className="font-normal text-[#5B6370] mb-2 cursor-pointer md:text-[16px] text-[14px]"
                   htmlFor="name"
                 >
-                  Ваше имя
+                  ФИО
                 </label>
                 <input
                   type="text"

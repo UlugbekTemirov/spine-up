@@ -19,7 +19,7 @@ const WHYUS = [
     id: 3,
     icon: "icon icon-usercheck",
     color: "#6A90FD",
-    text: "Индивидуальные подход",
+    text: "Индивидуальный подход",
     desc: "Наши специалисты с чуткостью относятся к здоровью каждого клиента и его индивидуальным потребностям и пожеланиям",
   },
   {
@@ -38,11 +38,11 @@ export default function WhyUs() {
       <div className="container">
         <div className="flex md:items-center md:flex-row flex-col justify-between">
           <h1 className="font-dudka font-bold md:text-[38px] text-[24px] mb-3 md:mb-0">
-            Почему именно мы?
+          Почему выбирают нас?
           </h1>
-          <p className="text-secondary xl:max-w-[555px] max-w-[450px] md:text-[16px] text-[14px]">
+          {/* <p className="text-secondary xl:max-w-[555px] max-w-[450px] md:text-[16px] text-[14px]">
           Почему именно мы-заменить на Почему выбирают нас:
-          </p>
+          </p> */}
         </div>
 
         <div className="grid md:grid-cols-4 md:gap-[30px] gap-6 mt-10">

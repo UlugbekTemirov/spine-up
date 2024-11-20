@@ -80,7 +80,7 @@ export default function ServiceCard({
               <h1 className="text-secondary-light">Длительность</h1>
             </div>
             <h1 className="font-dudka font-bold" itemProp="duration">
-              По {duration} часа
+              {duration}
             </h1>
           </div>
 
@@ -90,7 +90,7 @@ export default function ServiceCard({
               <h1 className="text-secondary-light text-nowrap">Дни занятий</h1>
             </div>
             <h1 className="font-dudka font-bold h-[45px] line-clamp-2" itemProp="availability">
-              {class_days[0].days.join(", ")}
+              {class_days[0]?.days?.join(", ") || "Не указано"} 
             </h1>
           </div>
         </div>

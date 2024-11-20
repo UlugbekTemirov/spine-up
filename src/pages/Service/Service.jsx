@@ -185,15 +185,15 @@ setUserData(initData)
               <span className="text-secondary font-normal">
                 Наши Продукты &gt;
               </span>{" "}
-              {newProduct.title}
+              {newProduct?.title}
             </span>
 
             <h1 className="md:text-[50px] text-[32px] font-dudka md:leading-[55px] leading-[41px] font-bold md:text-left text-center">
-              {newProduct.title}
+              {newProduct?.title}
             </h1>
 
             <p className="text-secondary-light md:text-base text-sm md:text-left text-center">
-            {newProduct.description}
+            {newProduct?.description}
             </p>
 
             <div className="flex flex-col gap-4">
@@ -207,7 +207,7 @@ setUserData(initData)
                   </h1>
                 </div>
 
-                <h1 className="font-dudka font-bold">{newProduct.number_of_sessions} занятий</h1>
+                <h1 className="font-dudka font-bold">{newProduct?.number_of_sessions} занятий</h1>
               </div>
 
               <div className="md:text-[15px] text-[12px] grid grid-cols-2 items-center gap-[26px]">
@@ -218,7 +218,7 @@ setUserData(initData)
                   <h1 className="text-secondary-light">Длительность</h1>
                 </div>
 
-                <h1 className="font-dudka font-bold">По {newProduct.duration} часа</h1>
+                <h1 className="font-dudka font-bold">{newProduct?.duration}</h1>
               </div>
 
               <div className="md:text-[15px] text-[12px] grid grid-cols-2 items-start gap-[26px]">
@@ -232,7 +232,7 @@ setUserData(initData)
                 </div>
 
                 <h1 className="font-dudka font-bold">
-                {newProduct.hasOwnProperty("class_days") && newProduct?.class_days[0]?.days?.join(", ")}
+                {newProduct?.hasOwnProperty("class_days") && newProduct?.class_days[0]?.days?.join(", ")}
                 </h1>
               </div>
             </div>
@@ -243,7 +243,7 @@ setUserData(initData)
           </div>
 
           <div className="md:w-[52%] md:my-0 my-4">
-            <LazyImage className="rounded-lg" width="100%" src={newProduct.image} />
+            <LazyImage className="rounded-lg" width="100%" src={newProduct?.image || ""} />
           </div>
 
           <Button onClick={() => setModal(true)} className="md:w-[300px] md:hidden block w-full">
@@ -257,7 +257,7 @@ setUserData(initData)
         <div className="flex items-start md:gap-[30px] gap-[12px]">
           <div>
             <img
-              src={newProduct.hasOwnProperty('two_pictures') && newProduct.two_pictures[0].image}
+              src={newProduct.hasOwnProperty('two_pictures') && newProduct?.two_pictures[0]?.image || ""}
               className="w-full md:h-[300px] h-[220px] rounded-lg object-cover"
               alt="image.png"
             />
@@ -265,7 +265,7 @@ setUserData(initData)
           <div>
             <img
               className="mt-[60px] w-full md:h-[300px] h-[220px] rounded-lg object-cover"
-              src={newProduct.hasOwnProperty('two_pictures') && newProduct.two_pictures[0].image}
+              src={newProduct.hasOwnProperty('two_pictures') && newProduct?.two_pictures[0]?.image || ""}
               alt="image.png"
             />
           </div>
@@ -273,7 +273,7 @@ setUserData(initData)
 
         <div className="flex flex-col md:gap-[30px] gap-6">
           <h1 className="font-dudka font-bold md:text-[34px] text-[24px] md:leading-[44px] leading-[31px]">
-            Что такое авторская методика для детей?
+            {newProduct.big_title}
           </h1>
           <p className="text-secondary md:text-[18px] text-sm">
           {newProduct.big_description}
@@ -316,14 +316,14 @@ setUserData(initData)
       {/* PHOTOS */}
       <div className="md:py-20 py-10 container">
         <h1 className="font-dudka md:text-[34px] text-2xl text-center font-bold md:mb-10 mb-6">
-          Фотографии из занятие и результаты
+        Фотографии занятий и результаты
         </h1>
 
         <div className="grid md:grid-cols-2 grid-cols-1 md:gap-x-[30px] gap-[18px]">
           <div>
             <img
               className="rounded-[12px] h-full"
-              src={newProduct.hasOwnProperty('ten_pictures') && newProduct.ten_pictures[0].image}
+              src={newProduct.hasOwnProperty('ten_pictures') && newProduct?.ten_pictures[0]?.image || ''}
               alt="placeholder"
             />
           </div>
@@ -332,14 +332,14 @@ setUserData(initData)
             <div>
               <img
                 className="rounded-[12px]"
-                src={newProduct.hasOwnProperty('ten_pictures') && newProduct.ten_pictures[1].image}
+                src={newProduct.hasOwnProperty('ten_pictures') && newProduct?.ten_pictures[1]?.image || ''}
                 alt="placeholder"
               />
             </div>
             <div>
               <img
                 className="rounded-[12px]"
-                src={newProduct.hasOwnProperty('ten_pictures') && newProduct.ten_pictures[2].image}
+                src={newProduct.hasOwnProperty('ten_pictures') && newProduct?.ten_pictures[2]?.image || ''}
                 alt="placeholder"
               />
             </div>
@@ -347,14 +347,14 @@ setUserData(initData)
             <div>
               <img
                 className="rounded-[12px]"
-                src={newProduct.hasOwnProperty('ten_pictures') && newProduct.ten_pictures[3].image}
+                src={newProduct.hasOwnProperty('ten_pictures') && newProduct?.ten_pictures[3]?.image || ''}
                 alt="placeholder"
               />
             </div>
             <div>
               <img
                 className="rounded-[12px]"
-                src={newProduct.hasOwnProperty('ten_pictures') && newProduct.ten_pictures[4].image}
+                src={newProduct.hasOwnProperty('ten_pictures') && newProduct?.ten_pictures[4]?.image || ''}
                 alt="placeholder"
               />
             </div>
@@ -366,14 +366,14 @@ setUserData(initData)
             <div>
               <img
                 className="rounded-[12px] h-full"
-                src={newProduct.hasOwnProperty('ten_pictures') && newProduct.ten_pictures[5].image}
+                src={newProduct.hasOwnProperty('ten_pictures') && newProduct?.ten_pictures[5]?.image || ''}
                 alt="placeholder"
               />
             </div>
             <div>
               <img
                 className="rounded-[12px] h-full"
-                src={newProduct.hasOwnProperty('ten_pictures') && newProduct.ten_pictures[6].image}
+                src={newProduct.hasOwnProperty('ten_pictures') && newProduct?.ten_pictures[6]?.image || ''}
                 alt="placeholder"
               />
             </div>
@@ -383,7 +383,7 @@ setUserData(initData)
             <div>
               <img
                 className="rounded-[12px] h-full"
-                src={newProduct.hasOwnProperty('ten_pictures') && newProduct.ten_pictures[7].image}
+                src={newProduct.hasOwnProperty('ten_pictures') && newProduct?.ten_pictures[7]?.image || ''}
                 alt="placeholder"
               />
             </div>
@@ -393,14 +393,14 @@ setUserData(initData)
             <div>
               <img
                 className="rounded-[12px] h-full"
-                src={newProduct.hasOwnProperty('ten_pictures') && newProduct.ten_pictures[8].image}
+                src={newProduct.hasOwnProperty('ten_pictures') && newProduct?.ten_pictures[8]?.image || ''}
                 alt="placeholder"
               />
             </div>
             <div>
               <img
                 className="rounded-[12px] h-full" 
-                src={newProduct.hasOwnProperty('ten_pictures') && newProduct.ten_pictures[9].image}
+                src={newProduct.hasOwnProperty('ten_pictures') && newProduct?.ten_pictures[9]?.image || ''}
                 alt="placeholder"
               />
             </div>
