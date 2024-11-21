@@ -275,7 +275,7 @@ setUserData(initData)
           <h1 className="font-dudka font-bold md:text-[34px] text-[24px] md:leading-[44px] leading-[31px]">
             {newProduct.big_title}
           </h1>
-          <p className="text-secondary md:text-[18px] text-sm" dangerouslySetInnerHTML={{__html: newProduct?.description}} />
+          <p className="text-secondary md:text-[18px] text-sm" dangerouslySetInnerHTML={{__html: newProduct?.big_description}} />
 
           <Button onClick={() => setModal(true)} className="md:w-[300px] w-full">Записаться на демо курс</Button>
         </div>
