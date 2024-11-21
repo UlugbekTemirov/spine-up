@@ -207,7 +207,7 @@ setUserData(initData)
                   </h1>
                 </div>
 
-                <h1 className="font-dudka font-bold">{newProduct?.number_of_sessions} занятий</h1>
+                <h1 className="font-dudka font-bold">{newProduct?.number_of_sessions}</h1>
               </div>
 
               <div className="md:text-[15px] text-[12px] grid grid-cols-2 items-center gap-[26px]">

@@ -70,7 +70,7 @@ export default function ServiceCard({
               <h1 className="text-secondary-light text-nowrap">Число занятий</h1>
             </div>
             <h1 className="font-dudka font-bold" itemProp="additionalType">
-              {number_of_sessions} занятий
+              {number_of_sessions}
             </h1>
           </div>
 
