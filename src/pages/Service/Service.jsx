@@ -114,11 +114,11 @@ setUserData(initData)
               className="font-normal text-[#5B6370] mb-2 cursor-pointer md:text-[16px] text-[14px]"
               htmlFor="name"
             >
-              Ваше имя
+              ФИО
             </label>
             <input
               type="text"
-              placeholder="Пишите свое имя"
+              placeholder="ФИО"
               id="name"
               name="name"
               value={userData.name}
@@ -429,11 +429,11 @@ setUserData(initData)
                 className="font-normal text-[#5B6370] mb-2 cursor-pointer md:text-[16px] text-[14px]"
                 htmlFor="name"
               >
-                Ваше имя
+                ФИО
               </label>
               <input
                 type="text"
-                placeholder="Пишите свое имя"
+                placeholder="ФИО"
                 id="name"
                 name="name"
                 value={userData.name}
