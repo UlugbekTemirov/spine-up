@@ -95,7 +95,7 @@ export default function index() {
                   <div>
                     <h1 className="font-bold font-dudka">{el.name}</h1>
                     <p className="text-[12px] text-secondary line-clamp-2">
-                      {el.position} | {el.years_of_experience} лет опыта
+                      {el.position} | {el.years_of_experience}
                     </p>
                   </div>
                 </div>
