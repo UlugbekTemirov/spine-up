@@ -120,7 +120,7 @@ export default function Contact({userData, setUserData, handleSubmit, handleData
               Остались вопросы?
               </h1>
               <p className="text-[#676C74] md:text-[16px] text-[14px]">
-              Оставьте своё и контактный номер телефона, мы обязательно с вами свяжемся!
+              Оставьте свое имя и контактный номер телефона, мы обязательно с вами свяжемся!
               </p>
             </div>
 
@@ -134,7 +134,7 @@ export default function Contact({userData, setUserData, handleSubmit, handleData
                 </label>
                 <input
                   type="text"
-                  placeholder="Пишите свое имя"
+                  placeholder="ФИО"
                   id="name"
                   name="name"
                   onChange={handleDataChange}
