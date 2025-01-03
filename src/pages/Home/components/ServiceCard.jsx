@@ -45,7 +45,7 @@ export default function ServiceCard({
             className="xl:h-[280px] h-[220px] rounded-[12px] w-full overflow-hidden"
           >
             <img
-              className="w-full h-[220px]"
+              className="w-full md:h-[300px] h-[220px] object-cover"
               src={image}
               alt={`${title} image`}
             />

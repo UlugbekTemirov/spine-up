@@ -199,7 +199,7 @@ setUserData(initData)
                     transition={{
                       duration: 0.2,
                     }}
-                    className="absolute z-10 top-6 -right-[350px] bg-white shadow-lg p-[30px] rounded-[30px] w-[772px] grid grid-cols-2 gap-1 border-2"
+                    className="absolute z-10 top-6 max-h-[600px] overflow-auto -right-[350px] bg-white shadow-lg p-[30px] rounded-[30px] w-[772px] grid grid-cols-2 gap-1 border-2"
                   >
                     {products.length > 0 &&
                       products.map((product, ind) => (
@@ -210,7 +210,7 @@ setUserData(initData)
                         >
                           <img
                             src={product.image}
-                            className="w-[80px] h-[65px] rounded-[12px]"
+                            className="w-[80px] h-[65px] rounded-[12px] shrink-0"
                           />
                           <div className="">
                           <h1 className="font-medium text-lg">{product.title}</h1>

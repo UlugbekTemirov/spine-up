@@ -242,9 +242,15 @@ setUserData(initData)
             </Button>
           </div>
 
-          <div className="md:w-[52%] md:my-0 my-4">
-            <LazyImage className="rounded-lg" width="100%" src={newProduct?.image || ""} />
-          </div>
+          <div className="md:w-[52%] md:my-0 my-4 md:h-[500px]">
+  <LazyImage
+    className="rounded-lg"
+    width="100%"
+    height="500px"
+    src={newProduct?.image || ""}
+    objectFit="cover"
+  />
+</div>
 
           <Button onClick={() => setModal(true)} className="md:w-[300px] md:hidden block w-full">
               Записаться
@@ -265,7 +271,7 @@ setUserData(initData)
           <div>
             <img
               className="mt-[60px] w-full md:h-[300px] h-[220px] rounded-lg object-cover"
-              src={newProduct.hasOwnProperty('two_pictures') && newProduct?.two_pictures[0]?.image || ""}
+              src={newProduct.hasOwnProperty('two_pictures') && newProduct?.two_pictures[1]?.image || ""}
               alt="image.png"
             />
           </div>
@@ -320,7 +326,7 @@ setUserData(initData)
         <div className="grid md:grid-cols-2 grid-cols-1 md:gap-x-[30px] gap-[18px]">
           <div>
             <img
-              className="rounded-[12px] h-full"
+              className="rounded-[12px] h-[800px] w-full"
               src={newProduct.hasOwnProperty('ten_pictures') && newProduct?.ten_pictures[0]?.image || ''}
               alt="placeholder"
             />
@@ -329,14 +335,14 @@ setUserData(initData)
           <div className="grid md:grid-cols-2 grid-cols-1 md:gap-[30px] gap-[18px]">
             <div>
               <img
-                className="rounded-[12px]"
+                className="rounded-[12px] h-[380px] w-full object-cover"
                 src={newProduct.hasOwnProperty('ten_pictures') && newProduct?.ten_pictures[1]?.image || ''}
                 alt="placeholder"
               />
             </div>
             <div>
               <img
-                className="rounded-[12px]"
+                className="rounded-[12px] h-[380px] w-full object-cover"
                 src={newProduct.hasOwnProperty('ten_pictures') && newProduct?.ten_pictures[2]?.image || ''}
                 alt="placeholder"
               />
@@ -344,14 +350,14 @@ setUserData(initData)
 
             <div>
               <img
-                className="rounded-[12px]"
+                className="rounded-[12px] h-[380px] w-full object-cover"
                 src={newProduct.hasOwnProperty('ten_pictures') && newProduct?.ten_pictures[3]?.image || ''}
                 alt="placeholder"
               />
             </div>
             <div>
               <img
-                className="rounded-[12px]"
+                className="rounded-[12px] h-[380px] w-full object-cover"
                 src={newProduct.hasOwnProperty('ten_pictures') && newProduct?.ten_pictures[4]?.image || ''}
                 alt="placeholder"
               />
@@ -363,14 +369,14 @@ setUserData(initData)
           <div className="md:col-span-3 flex flex-col md:gap-[30px] gap-[18px]">
             <div>
               <img
-                className="rounded-[12px] h-full"
+                className="rounded-[12px] h-[385px] w-full object-cover"
                 src={newProduct.hasOwnProperty('ten_pictures') && newProduct?.ten_pictures[5]?.image || ''}
                 alt="placeholder"
               />
             </div>
             <div>
               <img
-                className="rounded-[12px] h-full"
+                className="rounded-[12px] h-[385px] w-full object-cover"
                 src={newProduct.hasOwnProperty('ten_pictures') && newProduct?.ten_pictures[6]?.image || ''}
                 alt="placeholder"
               />
@@ -380,7 +386,7 @@ setUserData(initData)
           <div className="md:col-span-6">
             <div>
               <img
-                className="rounded-[12px] h-full"
+                className="rounded-[12px] h-[800px] w-full"
                 src={newProduct.hasOwnProperty('ten_pictures') && newProduct?.ten_pictures[7]?.image || ''}
                 alt="placeholder"
               />
@@ -390,14 +396,14 @@ setUserData(initData)
           <div className="md:col-span-3 flex flex-col gap-[30px]">
             <div>
               <img
-                className="rounded-[12px] h-full"
+                className="rounded-[12px] h-[385px] w-full object-cover"
                 src={newProduct.hasOwnProperty('ten_pictures') && newProduct?.ten_pictures[8]?.image || ''}
                 alt="placeholder"
               />
             </div>
             <div>
               <img
-                className="rounded-[12px] h-full" 
+                className="rounded-[12px] h-[385px] w-full object-cover" 
                 src={newProduct.hasOwnProperty('ten_pictures') && newProduct?.ten_pictures[9]?.image || ''}
                 alt="placeholder"
               />
