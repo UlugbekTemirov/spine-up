@@ -295,11 +295,11 @@ setUserData(initData)
           </h1>
 
           <div className="grid md:grid-cols-3 grid-cols-1 xl:gap-[60px] md:gap-10 gap-5 md:mt-10 mt-6">
-            {data.map(({title, id, text}) => (
-              <div className="gap-[18px] flex items-start" key={id}>
+            {newProduct?.session_steps?.map(({title, step_number, description}) => (
+              <div className="gap-[18px] flex items-start" key={step_number}>
                 <span>
                   <span className="md:w-[60px] md:h-[60px] w-10 h-10 shadow-faq flex items-center justify-center font-dudka md:text-[42px] text-2xl text-primary rounded-full bg-white">
-                    {id}
+                    {step_number}
                   </span>
                 </span>
 
@@ -308,7 +308,7 @@ setUserData(initData)
                     {title}
                   </h1>
                   <p className="mt-2 leading-[24px] text-secondary md:text-base text-sm">
-                    {text}
+                    {description}
                   </p>
                 </div>
               </div>
